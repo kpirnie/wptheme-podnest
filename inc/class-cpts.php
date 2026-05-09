@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Custom Post Type Registration
  *
@@ -20,7 +21,7 @@
  * @since   1.1.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 /**
  * Class PodNest_CPTs
@@ -28,9 +29,10 @@ defined( 'ABSPATH' ) || exit;
  * Self-registers all hooks in the constructor. Instantiated once by
  * {@see PodNest_Theme::boot_feature_classes()}.
  */
-final class PodNest_CPTs {
+final class PodNest_CPTs
+{
 
-    // ── CPT slug constants ────────────────────────────────────────
+    // -- CPT slug constants ----------------------------------------
 
     /** Post type slug for marquee/streamer items. */
     public const MARQUEE = 'podnest_marquee';
@@ -44,18 +46,19 @@ final class PodNest_CPTs {
     /** Post type slug for support pricing tiers. */
     public const PRICING = 'podnest_pricing';
 
-    // ── Constructor ───────────────────────────────────────────────
+    // -- Constructor -----------------------------------------------
 
     /**
      * Registers WordPress hooks managed by this class.
      */
-    public function __construct() {
-        add_action( 'init',       [ $this, 'register_post_types' ] );
-        add_action( 'init',       [ $this, 'register_meta_fields' ] );
-        add_action( 'admin_menu', [ $this, 'register_top_level_menu' ] );
+    public function __construct()
+    {
+        add_action('init',       [$this, 'register_post_types']);
+        add_action('init',       [$this, 'register_meta_fields']);
+        add_action('admin_menu', [$this, 'register_top_level_menu']);
     }
 
-    // ── Post type registration ────────────────────────────────────
+    // -- Post type registration ------------------------------------
 
     /**
      * Registers all four custom post types.
@@ -65,11 +68,12 @@ final class PodNest_CPTs {
      *
      * @return void
      */
-    public function register_post_types(): void {
-        register_post_type( self::MARQUEE, $this->marquee_args() );
-        register_post_type( self::FEATURE, $this->feature_args() );
-        register_post_type( self::RUNTIME, $this->runtime_args() );
-        register_post_type( self::PRICING, $this->pricing_args() );
+    public function register_post_types(): void
+    {
+        register_post_type(self::MARQUEE, $this->marquee_args());
+        register_post_type(self::FEATURE, $this->feature_args());
+        register_post_type(self::RUNTIME, $this->runtime_args());
+        register_post_type(self::PRICING, $this->pricing_args());
     }
 
     /**
@@ -81,14 +85,15 @@ final class PodNest_CPTs {
      *
      * @return array<string, mixed>
      */
-    private function marquee_args(): array {
+    private function marquee_args(): array
+    {
         return [
-            'labels'        => $this->labels( 'Marquee Items', 'Marquee Item', 'Marquee' ),
+            'labels'        => $this->labels('Marquee Items', 'Marquee Item', 'Marquee'),
             'public'        => false,
             'show_ui'       => true,
             'show_in_menu'  => 'podnest-content',
             'show_in_rest'  => true,
-            'supports'      => [ 'title', 'page-attributes' ],
+            'supports'      => ['title', 'page-attributes'],
             'menu_icon'     => 'dashicons-arrow-right-alt',
             'rewrite'       => false,
             'has_archive'   => false,
@@ -104,16 +109,17 @@ final class PodNest_CPTs {
      *
      * @return array<string, mixed>
      */
-    private function feature_args(): array {
+    private function feature_args(): array
+    {
         return [
-            'labels'        => $this->labels( 'Features', 'Feature', 'Features' ),
+            'labels'        => $this->labels('Features', 'Feature', 'Features'),
             'public'        => true,
             'has_archive'   => true,
             'show_ui'       => true,
             'show_in_menu'  => 'podnest-content',
             'show_in_rest'  => true,
-            'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'page-attributes' ],
-            'rewrite'       => [ 'slug' => 'features' ],
+            'supports'      => ['title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'],
+            'rewrite'       => ['slug' => 'features'],
             'menu_icon'     => 'dashicons-star-filled',
         ];
     }
@@ -127,16 +133,17 @@ final class PodNest_CPTs {
      *
      * @return array<string, mixed>
      */
-    private function runtime_args(): array {
+    private function runtime_args(): array
+    {
         return [
-            'labels'        => $this->labels( 'Runtimes', 'Runtime', 'Runtimes' ),
+            'labels'        => $this->labels('Runtimes', 'Runtime', 'Runtimes'),
             'public'        => true,
             'has_archive'   => true,
             'show_ui'       => true,
             'show_in_menu'  => 'podnest-content',
             'show_in_rest'  => true,
-            'supports'      => [ 'title', 'editor', 'thumbnail', 'excerpt', 'page-attributes' ],
-            'rewrite'       => [ 'slug' => 'runtimes' ],
+            'supports'      => ['title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'],
+            'rewrite'       => ['slug' => 'runtimes'],
             'menu_icon'     => 'dashicons-desktop',
         ];
     }
@@ -149,14 +156,15 @@ final class PodNest_CPTs {
      *
      * @return array<string, mixed>
      */
-    private function pricing_args(): array {
+    private function pricing_args(): array
+    {
         return [
-            'labels'        => $this->labels( 'Pricing Tiers', 'Pricing Tier', 'Pricing' ),
+            'labels'        => $this->labels('Pricing Tiers', 'Pricing Tier', 'Pricing'),
             'public'        => false,
             'show_ui'       => true,
             'show_in_menu'  => 'podnest-content',
             'show_in_rest'  => true,
-            'supports'      => [ 'title', 'editor', 'page-attributes' ],
+            'supports'      => ['title', 'editor', 'page-attributes'],
             'rewrite'       => false,
             'has_archive'   => false,
             'menu_icon'     => 'dashicons-money-alt',
@@ -174,17 +182,18 @@ final class PodNest_CPTs {
      * @param  string $menu_name Short label used in the admin menu.
      * @return array<string, string>
      */
-    private function labels( string $plural, string $singular, string $menu_name ): array {
+    private function labels(string $plural, string $singular, string $menu_name): array
+    {
         return [
-            'name'          => __( $plural,   'podnest' ),
-            'singular_name' => __( $singular, 'podnest' ),
-            'add_new_item'  => sprintf( __( 'Add %s', 'podnest' ), $singular ),
-            'edit_item'     => sprintf( __( 'Edit %s', 'podnest' ), $singular ),
-            'menu_name'     => __( $menu_name, 'podnest' ),
+            'name'          => __($plural,   'podnest'),
+            'singular_name' => __($singular, 'podnest'),
+            'add_new_item'  => sprintf(__('Add %s', 'podnest'), $singular),
+            'edit_item'     => sprintf(__('Edit %s', 'podnest'), $singular),
+            'menu_name'     => __($menu_name, 'podnest'),
         ];
     }
 
-    // ── Meta field registration ───────────────────────────────────
+    // -- Meta field registration -----------------------------------
 
     /**
      * Registers all custom meta fields with WordPress.
@@ -196,58 +205,59 @@ final class PodNest_CPTs {
      *
      * @return void
      */
-    public function register_meta_fields(): void {
-        $auth = static fn() => current_user_can( 'edit_posts' );
+    public function register_meta_fields(): void
+    {
+        $auth = static fn() => current_user_can('edit_posts');
 
         /* Shared: icon emoji and learn-more link (Feature + Runtime) */
-        foreach ( [ self::FEATURE, self::RUNTIME ] as $type ) {
-            register_post_meta( $type, '_pn_icon', [
+        foreach ([self::FEATURE, self::RUNTIME] as $type) {
+            register_post_meta($type, '_pn_icon', [
                 'show_in_rest'  => true,
                 'single'        => true,
                 'type'          => 'string',
                 'auth_callback' => $auth,
                 'description'   => 'Emoji or short text icon shown on cards.',
-            ] );
-            register_post_meta( $type, '_pn_learn_more_url', [
+            ]);
+            register_post_meta($type, '_pn_learn_more_url', [
                 'show_in_rest'  => true,
                 'single'        => true,
                 'type'          => 'string',
                 'auth_callback' => $auth,
                 'description'   => 'Optional URL for a learn-more CTA on the card.',
-            ] );
+            ]);
         }
 
         /* Runtime-only: newline-separated version strings */
-        register_post_meta( self::RUNTIME, '_pn_versions', [
+        register_post_meta(self::RUNTIME, '_pn_versions', [
             'show_in_rest'  => true,
             'single'        => true,
             'type'          => 'string',
             'auth_callback' => $auth,
             'description'   => 'Newline-separated list of supported version labels.',
-        ] );
+        ]);
 
         /* Pricing fields */
         $pricing_fields = [
-            '_pn_price'         => [ 'type' => 'string',  'description' => 'Numeric price amount (no currency symbol).' ],
-            '_pn_price_unit'    => [ 'type' => 'string',  'description' => 'Unit label, e.g. "/ hour" or "/ month".' ],
-            '_pn_tier_label'    => [ 'type' => 'string',  'description' => 'Short tier name shown above the price.' ],
-            '_pn_badge_text'    => [ 'type' => 'string',  'description' => 'Optional badge (e.g. "Most Popular").' ],
-            '_pn_is_featured'   => [ 'type' => 'boolean', 'description' => 'Whether this tier is visually highlighted.' ],
-            '_pn_features_list' => [ 'type' => 'string',  'description' => 'Newline list. Prefix "x:" for unavailable items.' ],
-            '_pn_cta_text'      => [ 'type' => 'string',  'description' => 'CTA button label.' ],
-            '_pn_cta_url'       => [ 'type' => 'string',  'description' => 'CTA button target URL.' ],
+            '_pn_price'         => ['type' => 'string',  'description' => 'Numeric price amount (no currency symbol).'],
+            '_pn_price_unit'    => ['type' => 'string',  'description' => 'Unit label, e.g. "/ hour" or "/ month".'],
+            '_pn_tier_label'    => ['type' => 'string',  'description' => 'Short tier name shown above the price.'],
+            '_pn_badge_text'    => ['type' => 'string',  'description' => 'Optional badge (e.g. "Most Popular").'],
+            '_pn_is_featured'   => ['type' => 'boolean', 'description' => 'Whether this tier is visually highlighted.'],
+            '_pn_features_list' => ['type' => 'string',  'description' => 'Newline list. Prefix "x:" for unavailable items.'],
+            '_pn_cta_text'      => ['type' => 'string',  'description' => 'CTA button label.'],
+            '_pn_cta_url'       => ['type' => 'string',  'description' => 'CTA button target URL.'],
         ];
 
-        foreach ( $pricing_fields as $key => $args ) {
-            register_post_meta( self::PRICING, $key, array_merge( $args, [
+        foreach ($pricing_fields as $key => $args) {
+            register_post_meta(self::PRICING, $key, array_merge($args, [
                 'show_in_rest'  => true,
                 'single'        => true,
                 'auth_callback' => $auth,
-            ] ) );
+            ]));
         }
     }
 
-    // ── Admin menu ────────────────────────────────────────────────
+    // -- Admin menu ------------------------------------------------
 
     /**
      * Creates a top-level "PodNest Content" admin menu.
@@ -258,10 +268,11 @@ final class PodNest_CPTs {
      *
      * @return void
      */
-    public function register_top_level_menu(): void {
+    public function register_top_level_menu(): void
+    {
         add_menu_page(
-            __( 'PodNest Content', 'podnest' ),
-            __( 'PodNest Content', 'podnest' ),
+            __('PodNest Content', 'podnest'),
+            __('PodNest Content', 'podnest'),
             'manage_options',
             'podnest-content',
             static fn() => null,

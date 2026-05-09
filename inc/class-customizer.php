@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customizer Controls
  *
@@ -14,7 +15,7 @@
  * @since   1.1.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 /**
  * Class PodNest_Customizer
@@ -22,18 +23,20 @@ defined( 'ABSPATH' ) || exit;
  * Self-registers hooks in the constructor. Instantiated once by
  * {@see PodNest_Theme::boot_feature_classes()}.
  */
-final class PodNest_Customizer {
+final class PodNest_Customizer
+{
 
-    // ── Constructor ───────────────────────────────────────────────
+    // -- Constructor -----------------------------------------------
 
     /**
      * Registers the customize_register hook.
      */
-    public function __construct() {
-        add_action( 'customize_register', [ $this, 'register' ] );
+    public function __construct()
+    {
+        add_action('customize_register', [$this, 'register']);
     }
 
-    // ── Registration entry point ──────────────────────────────────
+    // -- Registration entry point ----------------------------------
 
     /**
      * Adds all PodNest sections, settings, and controls to the Customizer.
@@ -41,14 +44,15 @@ final class PodNest_Customizer {
      * @param  WP_Customize_Manager $wp_customize WordPress Customizer manager instance.
      * @return void
      */
-    public function register( WP_Customize_Manager $wp_customize ): void {
-        $this->hero_section( $wp_customize );
-        $this->pricing_section( $wp_customize );
-        $this->social_section( $wp_customize );
-        $this->footer_section( $wp_customize );
+    public function register(WP_Customize_Manager $wp_customize): void
+    {
+        $this->hero_section($wp_customize);
+        $this->pricing_section($wp_customize);
+        $this->social_section($wp_customize);
+        $this->footer_section($wp_customize);
     }
 
-    // ── Section builders ──────────────────────────────────────────
+    // -- Section builders ------------------------------------------
 
     /**
      * Registers the Hero Section controls.
@@ -56,21 +60,27 @@ final class PodNest_Customizer {
      * @param  WP_Customize_Manager $c Customizer manager.
      * @return void
      */
-    private function hero_section( WP_Customize_Manager $c ): void {
-        $c->add_section( 'podnest_hero', [
-            'title'    => __( 'Hero Section', 'podnest' ),
+    private function hero_section(WP_Customize_Manager $c): void
+    {
+        $c->add_section('podnest_hero', [
+            'title'    => __('Hero Section', 'podnest'),
             'priority' => 30,
-        ] );
+        ]);
 
-        $this->add_text( $c, 'hero_badge_text',        __( 'Badge text', 'podnest' ),         'podnest_hero', 'Open Source · MIT License' );
-        $this->add_text( $c, 'hero_title_line1',       __( 'Title line 1', 'podnest' ),        'podnest_hero', 'Secure. Manage.' );
-        $this->add_text( $c, 'hero_title_line2',       __( 'Title line 2 (gradient)', 'podnest' ), 'podnest_hero', 'Deploy.' );
-        $this->add_textarea( $c, 'hero_description',   __( 'Description', 'podnest' ),          'podnest_hero',
-            'PodNest provisions and manages isolated, production-hardened website pods using Podman — no shell required after initial setup.' );
-        $this->add_text( $c, 'hero_cta_primary',       __( 'Primary CTA text', 'podnest' ),    'podnest_hero', 'Get Started Free' );
-        $this->add_url(  $c, 'hero_cta_primary_url',   __( 'Primary CTA URL', 'podnest' ),     'podnest_hero', 'https://github.com/kpirnie/podnest' );
-        $this->add_text( $c, 'hero_cta_secondary',     __( 'Secondary CTA text', 'podnest' ),  'podnest_hero', 'View Features' );
-        $this->add_url(  $c, 'hero_cta_secondary_url', __( 'Secondary CTA URL', 'podnest' ),   'podnest_hero', '#features' );
+        $this->add_text($c, 'hero_badge_text',        __('Badge text', 'podnest'),         'podnest_hero', 'Open Source · MIT License');
+        $this->add_text($c, 'hero_title_line1',       __('Title line 1', 'podnest'),        'podnest_hero', 'Secure. Manage.');
+        $this->add_text($c, 'hero_title_line2',       __('Title line 2 (gradient)', 'podnest'), 'podnest_hero', 'Deploy.');
+        $this->add_textarea(
+            $c,
+            'hero_description',
+            __('Description', 'podnest'),
+            'podnest_hero',
+            'PodNest provisions and manages isolated, production-hardened website pods using Podman — no shell required after initial setup.'
+        );
+        $this->add_text($c, 'hero_cta_primary',       __('Primary CTA text', 'podnest'),    'podnest_hero', 'Get Started Free');
+        $this->add_url($c, 'hero_cta_primary_url',   __('Primary CTA URL', 'podnest'),     'podnest_hero', 'https://github.com/kpirnie/podnest');
+        $this->add_text($c, 'hero_cta_secondary',     __('Secondary CTA text', 'podnest'),  'podnest_hero', 'View Features');
+        $this->add_url($c, 'hero_cta_secondary_url', __('Secondary CTA URL', 'podnest'),   'podnest_hero', '#features');
     }
 
     /**
@@ -82,14 +92,20 @@ final class PodNest_Customizer {
      * @param  WP_Customize_Manager $c Customizer manager.
      * @return void
      */
-    private function pricing_section( WP_Customize_Manager $c ): void {
-        $c->add_section( 'podnest_pricing_defaults', [
-            'title'    => __( 'Pricing Defaults', 'podnest' ),
+    private function pricing_section(WP_Customize_Manager $c): void
+    {
+        $c->add_section('podnest_pricing_defaults', [
+            'title'    => __('Pricing Defaults', 'podnest'),
             'priority' => 40,
-        ] );
+        ]);
 
-        $this->add_url( $c, 'support_contact_url', __( 'Contact page URL', 'podnest' ),
-            'podnest_pricing_defaults', 'https://kevinpirnie.com/about-kevin-pirnie/lets-talk/' );
+        $this->add_url(
+            $c,
+            'support_contact_url',
+            __('Contact page URL', 'podnest'),
+            'podnest_pricing_defaults',
+            'https://kevinpirnie.com/about-kevin-pirnie/lets-talk/'
+        );
     }
 
     /**
@@ -98,16 +114,17 @@ final class PodNest_Customizer {
      * @param  WP_Customize_Manager $c Customizer manager.
      * @return void
      */
-    private function social_section( WP_Customize_Manager $c ): void {
-        $c->add_section( 'podnest_social', [
-            'title'    => __( 'Social Links', 'podnest' ),
+    private function social_section(WP_Customize_Manager $c): void
+    {
+        $c->add_section('podnest_social', [
+            'title'    => __('Social Links', 'podnest'),
             'priority' => 45,
-        ] );
+        ]);
 
-        $this->add_url( $c, 'social_github',   __( 'GitHub URL', 'podnest' ),    'podnest_social', 'https://github.com/kpirnie/podnest' );
-        $this->add_url( $c, 'social_discord',  __( 'Discord URL', 'podnest' ),   'podnest_social', '' );
-        $this->add_url( $c, 'social_twitter',  __( 'X / Twitter URL', 'podnest' ), 'podnest_social', '' );
-        $this->add_url( $c, 'social_facebook', __( 'Facebook URL', 'podnest' ),  'podnest_social', '' );
+        $this->add_url($c, 'social_github',   __('GitHub URL', 'podnest'),    'podnest_social', 'https://github.com/kpirnie/podnest');
+        $this->add_url($c, 'social_discord',  __('Discord URL', 'podnest'),   'podnest_social', '');
+        $this->add_url($c, 'social_twitter',  __('X / Twitter URL', 'podnest'), 'podnest_social', '');
+        $this->add_url($c, 'social_facebook', __('Facebook URL', 'podnest'),  'podnest_social', '');
     }
 
     /**
@@ -116,17 +133,23 @@ final class PodNest_Customizer {
      * @param  WP_Customize_Manager $c Customizer manager.
      * @return void
      */
-    private function footer_section( WP_Customize_Manager $c ): void {
-        $c->add_section( 'podnest_footer', [
-            'title'    => __( 'Footer', 'podnest' ),
+    private function footer_section(WP_Customize_Manager $c): void
+    {
+        $c->add_section('podnest_footer', [
+            'title'    => __('Footer', 'podnest'),
             'priority' => 50,
-        ] );
+        ]);
 
-        $this->add_text( $c, 'footer_tagline', __( 'Tagline under logo', 'podnest' ),
-            'podnest_footer', 'Hardened. Automated. Production-Ready.' );
+        $this->add_text(
+            $c,
+            'footer_tagline',
+            __('Tagline under logo', 'podnest'),
+            'podnest_footer',
+            'Hardened. Automated. Production-Ready.'
+        );
     }
 
-    // ── DRY helpers ───────────────────────────────────────────────
+    // -- DRY helpers -----------------------------------------------
 
     /**
      * Adds a text setting + control pair to the Customizer.
@@ -145,15 +168,15 @@ final class PodNest_Customizer {
         string $section,
         string $default = ''
     ): void {
-        $c->add_setting( 'podnest_' . $key, [
+        $c->add_setting('podnest_' . $key, [
             'default'           => $default,
             'sanitize_callback' => 'sanitize_text_field',
-        ] );
-        $c->add_control( 'podnest_' . $key, [
+        ]);
+        $c->add_control('podnest_' . $key, [
             'label'   => $label,
             'section' => $section,
             'type'    => 'text',
-        ] );
+        ]);
     }
 
     /**
@@ -173,15 +196,15 @@ final class PodNest_Customizer {
         string $section,
         string $default = ''
     ): void {
-        $c->add_setting( 'podnest_' . $key, [
+        $c->add_setting('podnest_' . $key, [
             'default'           => $default,
             'sanitize_callback' => 'sanitize_textarea_field',
-        ] );
-        $c->add_control( 'podnest_' . $key, [
+        ]);
+        $c->add_control('podnest_' . $key, [
             'label'   => $label,
             'section' => $section,
             'type'    => 'textarea',
-        ] );
+        ]);
     }
 
     /**
@@ -201,14 +224,14 @@ final class PodNest_Customizer {
         string $section,
         string $default = ''
     ): void {
-        $c->add_setting( 'podnest_' . $key, [
+        $c->add_setting('podnest_' . $key, [
             'default'           => $default,
             'sanitize_callback' => 'esc_url_raw',
-        ] );
-        $c->add_control( 'podnest_' . $key, [
+        ]);
+        $c->add_control('podnest_' . $key, [
             'label'   => $label,
             'section' => $section,
             'type'    => 'url',
-        ] );
+        ]);
     }
 }

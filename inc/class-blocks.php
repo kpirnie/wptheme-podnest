@@ -24,7 +24,7 @@ defined('ABSPATH') || exit;
 final class PodNest_Blocks
 {
 
-    // ── Block name constants ──────────────────────────────────────
+    // -- Block name constants --------------------------------------
 
     /** Fully-qualified name of the marquee strip block. */
     public const MARQUEE  = 'podnest/marquee-strip';
@@ -38,7 +38,7 @@ final class PodNest_Blocks
     /** Fully-qualified name of the pricing table block. */
     public const PRICING  = 'podnest/pricing-table';
 
-    // ── Constructor ───────────────────────────────────────────────
+    // -- Constructor -----------------------------------------------
 
     /**
      * Registers the 'init' hook that registers all four blocks.
@@ -49,7 +49,7 @@ final class PodNest_Blocks
         add_action('init', [$this, 'register']);
     }
 
-    // ── Block registration ────────────────────────────────────────
+    // -- Block registration ----------------------------------------
 
     /**
      * Registers all four blocks with WordPress.
@@ -106,7 +106,7 @@ final class PodNest_Blocks
         return $cats;
     }
 
-    // ── Public render callbacks ───────────────────────────────────
+    // -- Public render callbacks -----------------------------------
 
     /**
      * Renders the marquee strip block.
@@ -329,7 +329,7 @@ final class PodNest_Blocks
         return '<div class="pn-pricing-grid">' . $cards . '</div>';
     }
 
-    // ── Private query helpers ─────────────────────────────────────
+    // -- Private query helpers -------------------------------------
 
     /**
      * Fetches published posts for a given CPT, ordered by menu_order then date.

@@ -39,7 +39,7 @@ final class PodNest_Assets
     /** True when the compiled IIFE bundle is loaded — skips type="module" injection */
     private bool $using_built_js = false;
 
-    // ── Constructor ───────────────────────────────────────────────
+    // -- Constructor -----------------------------------------------
 
     /**
      * Registers all WordPress hooks managed by this class.
@@ -55,7 +55,7 @@ final class PodNest_Assets
         add_filter('the_generator',              '__return_empty_string');
     }
 
-    // ── Frontend assets ───────────────────────────────────────────
+    // -- Frontend assets -------------------------------------------
 
     /**
      * Enqueues the main theme stylesheet and the ES module app entry point.
@@ -107,7 +107,7 @@ final class PodNest_Assets
         );
     }
 
-    // ── Script module type ────────────────────────────────────────
+    // -- Script module type ----------------------------------------
 
     /**
      * Injects type="module" into script tags for registered module handles.
@@ -130,7 +130,7 @@ final class PodNest_Assets
         return $tag;
     }
 
-    // ── <head> performance hints ──────────────────────────────────
+    // -- <head> performance hints ----------------------------------
 
     /**
      * Outputs preconnect and preload hints early in <head>.
@@ -158,7 +158,7 @@ final class PodNest_Assets
 <?php
     }
 
-    // ── Widget sidebars ───────────────────────────────────────────
+    // -- Widget sidebars -------------------------------------------
 
     /**
      * Registers all widget sidebars used by the theme.
@@ -208,7 +208,7 @@ final class PodNest_Assets
         ]);
     }
 
-    // ── <head> cleanup ────────────────────────────────────────────
+    // -- <head> cleanup --------------------------------------------
 
     /**
      * Removes WordPress-generated noise from the <head> that has no value

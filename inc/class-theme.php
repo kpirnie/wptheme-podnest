@@ -23,7 +23,7 @@ defined('ABSPATH') || exit;
 final class PodNest_Theme
 {
 
-    // ── Singleton ────────────────────────────────────────────────
+    // -- Singleton ------------------------------------------------
 
     /** @var self|null Singleton instance. */
     private static ?self $instance = null;
@@ -53,7 +53,7 @@ final class PodNest_Theme
     /** Prevent external cloning of the singleton. */
     private function __clone() {}
 
-    // ── Hook registration ────────────────────────────────────────
+    // -- Hook registration ----------------------------------------
 
     /**
      * Registers WordPress hooks owned by this class.
@@ -81,7 +81,7 @@ final class PodNest_Theme
         add_filter('comments_array',  '__return_empty_array', 10, 2);
     }
 
-    // ── Feature class bootstrapping ───────────────────────────────
+    // -- Feature class bootstrapping -------------------------------
 
     /**
      * Instantiates each feature class.
@@ -101,7 +101,7 @@ final class PodNest_Theme
         new PodNest_Customizer();
     }
 
-    // ── Theme support ────────────────────────────────────────────
+    // -- Theme support --------------------------------------------
 
     /**
      * Declares WordPress theme feature support.
@@ -187,7 +187,7 @@ final class PodNest_Theme
         ]);
     }
 
-    // ── Excerpt filters ──────────────────────────────────────────
+    // -- Excerpt filters ------------------------------------------
 
     /**
      * Sets the auto-excerpt word count to 28 words.
@@ -211,7 +211,7 @@ final class PodNest_Theme
         return ' <span class="pn-muted">…</span>';
     }
 
-    // ── Editor ───────────────────────────────────────────────────
+    // -- Editor ---------------------------------------------------
 
     /**
      * Disables the block editor on pages that use the front-page.php template.

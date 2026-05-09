@@ -25,7 +25,7 @@
         <?php esc_html_e('Skip to content', 'podnest'); ?>
     </a>
 
-    <!-- ── Fixed navigation bar ──────────────────────────────────── -->
+    <!-- -- Fixed navigation bar ------------------------------------ -->
     <header id="site-header" role="banner" aria-label="<?php esc_attr_e('Site header', 'podnest'); ?>">
         <div class="pn-container">
             <div class="pn-nav-inner">
@@ -82,7 +82,7 @@
         </div><!-- /.pn-container -->
     </header>
 
-    <!-- ── Mobile navigation panel (hidden until hamburger activated) -->
+    <!-- -- Mobile navigation panel (hidden until hamburger activated) -->
     <nav id="pn-mobile-nav"
         class="pn-mobile-nav"
         aria-label="<?php esc_attr_e('Mobile navigation', 'podnest'); ?>">
@@ -109,5 +109,5 @@
         </a>
     </nav>
 
-    <!-- ── Main content wrapper — closed in footer.php ───────────── -->
+    <!-- -- Main content wrapper — closed in footer.php ------------- -->
     <div id="main-content">

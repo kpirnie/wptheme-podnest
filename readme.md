@@ -164,42 +164,42 @@ Footer columns show static fallback links until widgets are assigned.
 
 ```
 wp-podnest/
-├── functions.php               Bootstrap — loads classes, boots singleton
-├── front-page.php              Marketing homepage
-├── header.php / footer.php
-├── page.php / single.php / index.php / archive.php / search.php / 404.php
-├── template-features.php       Features detail page template
-├── template-runtimes.php       Runtimes detail page template
-├── build.mjs                   esbuild config
-├── package.json
+├-- functions.php               Bootstrap — loads classes, boots singleton
+├-- front-page.php              Marketing homepage
+├-- header.php / footer.php
+├-- page.php / single.php / index.php / archive.php / search.php / 404.php
+├-- template-features.php       Features detail page template
+├-- template-runtimes.php       Runtimes detail page template
+├-- build.mjs                   esbuild config
+├-- package.json
 │
-├── inc/
-│   ├── class-theme.php         Singleton bootstrap — theme support, menus, image sizes
-│   ├── class-assets.php        Enqueue CSS/JS, widget sidebars, head cleanup
-│   ├── class-seo.php           OG/Twitter meta, JSON-LD structured data
-│   ├── class-cpts.php          CPT registration + meta field registration
-│   ├── class-meta-boxes.php    Meta box UI, save, admin columns
-│   ├── class-blocks.php        Block registration + server-side render callbacks
-│   ├── class-customizer.php    Customizer sections and controls
-│   ├── class-nav-walker.php    Primary nav walker
-│   ├── class-social-walker.php Social icon nav walker
-│   ├── class-breadcrumbs.php   Schema.org breadcrumb trail
-│   └── helpers.php             Template helper functions
+├-- inc/
+│   ├-- class-theme.php         Singleton bootstrap — theme support, menus, image sizes
+│   ├-- class-assets.php        Enqueue CSS/JS, widget sidebars, head cleanup
+│   ├-- class-seo.php           OG/Twitter meta, JSON-LD structured data
+│   ├-- class-cpts.php          CPT registration + meta field registration
+│   ├-- class-meta-boxes.php    Meta box UI, save, admin columns
+│   ├-- class-blocks.php        Block registration + server-side render callbacks
+│   ├-- class-customizer.php    Customizer sections and controls
+│   ├-- class-nav-walker.php    Primary nav walker
+│   ├-- class-social-walker.php Social icon nav walker
+│   ├-- class-breadcrumbs.php   Schema.org breadcrumb trail
+│   └-- helpers.php             Template helper functions
 │
-└── assets/
-    ├── css/
-    │   ├── theme.css           Source stylesheet
-    │   └── podnest.css         Minified build output (gitignored)
-    └── js/
-        ├── app.js              Frontend ES module entry point
-        ├── modules/            Frontend JS modules (8 files)
-        ├── editor/
-        │   ├── index.js        Block editor entry point
-        │   ├── blocks/         Block definition modules (4 files)
-        │   └── utils/
-        ├── podnest.js          Minified frontend bundle (gitignored)
-        └── editor/
-            └── podnest-editor.js  Minified editor bundle (gitignored)
+└-- assets/
+    ├-- css/
+    │   ├-- theme.css           Source stylesheet
+    │   └-- podnest.css         Minified build output (gitignored)
+    └-- js/
+        ├-- app.js              Frontend ES module entry point
+        ├-- modules/            Frontend JS modules (8 files)
+        ├-- editor/
+        │   ├-- index.js        Block editor entry point
+        │   ├-- blocks/         Block definition modules (4 files)
+        │   └-- utils/
+        ├-- podnest.js          Minified frontend bundle (gitignored)
+        └-- editor/
+            └-- podnest-editor.js  Minified editor bundle (gitignored)
 ```
 
 ---

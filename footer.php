@@ -24,7 +24,7 @@
         <!-- Four-column grid: brand | product | resources | company -->
         <div class="pn-footer-grid">
 
-            <!-- ── Brand column ────────────────────────────── -->
+            <!-- -- Brand column ------------------------------ -->
             <div class="pn-footer-brand">
 
                 <!-- Logo + brand word mark inline -->
@@ -55,7 +55,7 @@
 
             </div><!-- /.pn-footer-brand -->
 
-            <!-- ── Product column — widget sidebar ─────────── -->
+            <!-- -- Product column — widget sidebar ----------- -->
             <div class="pn-footer-links">
                 <?php if (is_active_sidebar('footer-product')) : ?>
                     <?php dynamic_sidebar('footer-product'); ?>
@@ -72,7 +72,7 @@
                 <?php endif; ?>
             </div>
 
-            <!-- ── Resources column — widget sidebar ───────── -->
+            <!-- -- Resources column — widget sidebar --------- -->
             <div class="pn-footer-links">
                 <?php if (is_active_sidebar('footer-resources')) : ?>
                     <?php dynamic_sidebar('footer-resources'); ?>
@@ -88,7 +88,7 @@
                 <?php endif; ?>
             </div>
 
-            <!-- ── Company column — widget sidebar ─────────── -->
+            <!-- -- Company column — widget sidebar ----------- -->
             <div class="pn-footer-links">
                 <?php if (is_active_sidebar('footer-company')) : ?>
                     <?php dynamic_sidebar('footer-company'); ?>
@@ -108,7 +108,7 @@
 
         </div><!-- /.pn-footer-grid -->
 
-        <!-- ── Bottom bar: copyright + social icons ──────────── -->
+        <!-- -- Bottom bar: copyright + social icons ------------ -->
         <div class="pn-footer-bottom">
 
             <p class="pn-footer-copy">
@@ -149,7 +149,7 @@
     </div><!-- /.pn-container -->
 </footer>
 
-<!-- ── Scroll-to-top button (shown/hidden via JS) ────────────── -->
+<!-- -- Scroll-to-top button (shown/hidden via JS) -------------- -->
 <?php podnest_scroll_top_button(); ?>
 
 <?php wp_footer(); ?>

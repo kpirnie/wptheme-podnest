@@ -20,7 +20,7 @@
 
 defined('ABSPATH') || exit;
 
-/* ── 1. Constants ────────────────────────────────────────────── */
+/* -- 1. Constants ---------------------------------------------- */
 
 /** Theme semantic version — used as cache-bust key for all enqueued assets. */
 define('PODNEST_VERSION', '1.1.0');
@@ -31,11 +31,11 @@ define('PODNEST_DIR', get_template_directory());
 /** Public URI to the theme root (no trailing slash). */
 define('PODNEST_URI', get_template_directory_uri());
 
-/* ── 2. Helpers ──────────────────────────────────────────────── */
+/* -- 2. Helpers ------------------------------------------------ */
 
 require_once PODNEST_DIR . '/inc/helpers.php';
 
-/* ── 3. Class autoloader ─────────────────────────────────────── */
+/* -- 3. Class autoloader --------------------------------------- */
 
 /**
  * Loads a theme class file from /inc.
@@ -75,6 +75,6 @@ foreach ($podnest_classes as $class) {
     podnest_load_class($class);
 }
 
-/* ── 4. Boot the theme singleton ─────────────────────────────── */
+/* -- 4. Boot the theme singleton ------------------------------- */
 
 PodNest_Theme::instance();
