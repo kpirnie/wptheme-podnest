@@ -36,9 +36,6 @@ get_template_part('template-parts/sections/runtimes');
 // get the security
 get_template_part('template-parts/sections/security');
 
-// get the pricing table
-get_template_part('template-parts/sections/pricing');
-
 // get the CTA
 get_template_part('template-parts/sections/cta');
 
