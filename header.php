@@ -3,11 +3,11 @@
 /**
  * Site Header Template
  *
- * Outputs the skip link, fixed navigation bar, and mobile nav panel.
- * Also opens the #main-content wrapper that footer.php closes.
- *
  * @package PodNest
  */
+
+defined('ABSPATH') || exit;
+
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
