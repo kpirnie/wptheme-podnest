@@ -112,11 +112,9 @@
         <div class="pn-footer-bottom">
 
             <p class="pn-footer-copy">
-                &copy; <?php echo esc_html(gmdate('Y')); ?>
-                <?php echo esc_html(get_bloginfo('name')); ?>.
-                <?php esc_html_e('Built by', 'podnest'); ?>
+                Copyright &copy; <?php echo esc_html(gmdate('Y')); ?>
                 <a href="https://kevinpirnie.com/" rel="noopener" target="_blank">Kevin Pirnie</a>.
-                <?php esc_html_e('MIT License.', 'podnest'); ?>
+                <?php esc_html_e('All Rights Reserved.', 'podnest'); ?>
             </p>
 
             <!-- Social icon row: GitHub, Discord, X/Twitter, Facebook -->

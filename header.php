@@ -16,6 +16,10 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
+    <link rel="icon" type="image/svg+xml" href="https://cdn.kcp.im/logos/podnest.svg">
+    <link rel="alternate icon" type="image/svg+xml" href="https://cdn.kcp.im/logos/podnest.svg">
+    <link rel="apple-touch-icon" href="https://cdn.kcp.im/logos/podnest.svg">
+    <link rel="icon" href="https://cdn.kcp.im/logos/podnest.ico" sizes="any">
 </head>
 
 <body <?php body_class(); ?>>
@@ -36,9 +40,9 @@
                     rel="home"
                     aria-label="<?php echo esc_attr(get_bloginfo('name') . ' — ' . __('Home', 'podnest')); ?>">
                     <img src="https://c.pnst.us/logos/podnest.svg" alt="PodNest ~ Secure. Manage. Deploy" width="80" height="80" class="pn-nav-logo-img" loading="eager">
-                    <span class="pn-brand-word" aria-hidden="true">
+                    <h1 class="pn-brand-word" aria-hidden="true">
                         <span class="pn-brand-pod">POD</span><span class="pn-brand-nest">NEST</span>
-                    </span>
+                    </h1>
                 </a>
 
                 <!-- Desktop primary navigation -->

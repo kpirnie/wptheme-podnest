@@ -150,6 +150,7 @@ h4 {
   font-family: var(--pn-font-brand);
   font-weight: 900;
   letter-spacing: 0.06em;
+  font-size:2rem;
 }
 .pn-brand-pod {
   color: var(--pn-blue);
@@ -2662,4 +2663,9 @@ p:last-child {
     .pn-footer-copy {
       text-align:center;
     }
+}
+
+.pn-cta-inner .pn-hero-ctas {
+    justify-content: center;
+    margin-top: 32px;
 }
