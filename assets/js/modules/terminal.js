@@ -32,8 +32,9 @@ const LINES = [
     { text: '  ✓ MariaDB container started',          cls: 'pn-term-ok',                 delay: 3600 },
     { text: '  ✓ Redis container started',            cls: 'pn-term-ok',                 delay: 3900 },
     { text: '  ✓ PHP-FPM container started',          cls: 'pn-term-ok',                 delay: 4200 },
-    { text: '  ✓ Nginx container started',            cls: 'pn-term-ok',                 delay: 4500 },
-    { text: '  ✓ Pod running on :8081',               cls: 'pn-term-info',               delay: 4800 },
+    { text: '  ✓ Varnish container started',            cls: 'pn-term-ok',                 delay: 4500 },
+    { text: '  ✓ Nginx container started',            cls: 'pn-term-ok',                 delay: 4800 },
+    { text: '  ✓ Pod running on :8081',               cls: 'pn-term-info',               delay: 5100 },
 ];
 
 /**

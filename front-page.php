@@ -17,155 +17,22 @@
 defined('ABSPATH') || exit;
 
 get_header();
+
+// get the hero
+get_template_part('template-parts/sections/hero');
+
+// write out the marquee
+echo podnest_render_block('podnest/marquee-strip');
+
+// get the features
+get_template_part('template-parts/sections/features');
+
+// get the architecture
+get_template_part('template-parts/sections/architecture');
 ?>
 
-<!-- -- HERO ---------------------------------------------------------------- -->
-<section id="hero" aria-labelledby="hero-heading">
-    <div class="pn-hero-glow" aria-hidden="true"></div>
-    <div class="pn-hero-grid-lines" aria-hidden="true"></div>
 
-    <div class="pn-container">
-        <div class="pn-hero-inner">
 
-            <div class="pn-hero-content">
-                <span class="pn-hero-badge">
-                    <?php echo podnest_opt('hero_badge_text', 'Open Source &middot; MIT License'); ?>
-                </span>
-                <h1 class="pn-hero-title" id="hero-heading">
-                    <?php echo esc_html(podnest_opt('hero_title_line1', 'Secure. Manage.')); ?><br>
-                    <span class="pn-gradient-text">
-                        <?php echo esc_html(podnest_opt('hero_title_line2', 'Deploy.')); ?>
-                    </span>
-                </h1>
-                <p class="pn-hero-desc">
-                    <?php echo esc_html(podnest_opt(
-                        'hero_description',
-                        'PodNest provisions and manages isolated, production-hardened website pods using Podman — no shell required after initial setup.'
-                    )); ?>
-                </p>
-                <div class="pn-hero-ctas">
-                    <a href="<?php echo podnest_opt_url('hero_cta_primary_url', 'https://github.com/kpirnie/podnest'); ?>"
-                        class="pn-btn-primary" target="_blank" rel="noopener noreferrer">
-                        <?php echo esc_html(podnest_opt('hero_cta_primary', 'Get Started Free')); ?>
-                    </a>
-                    <a href="<?php echo podnest_opt_url('hero_cta_secondary_url', '#features'); ?>"
-                        class="pn-btn-secondary">
-                        <?php echo esc_html(podnest_opt('hero_cta_secondary', 'View Features')); ?>
-                    </a>
-                </div>
-                <div class="pn-hero-stats" aria-label="<?php esc_attr_e('Key stats', 'podnest'); ?>">
-                    <?php foreach ([['MIT', 'License'], ['Go', 'Language'], ['Podman', 'Runtime'], ['v1.0', 'Released']] as [$v, $l]) : ?>
-                        <div class="pn-stat">
-                            <span class="pn-stat-value"><?php echo esc_html($v); ?></span>
-                            <span class="pn-stat-label"><?php echo esc_html($l); ?></span>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div><!-- /.pn-hero-content -->
-
-            <!-- Terminal — lines are injected by assets/js/modules/terminal.js -->
-            <div class="pn-hero-terminal"
-                aria-label="<?php esc_attr_e('PodNest terminal session example', 'podnest'); ?>"
-                role="img">
-                <div class="pn-terminal-header" aria-hidden="true">
-                    <span class="pn-dot pn-dot--red"></span>
-                    <span class="pn-dot pn-dot--yellow"></span>
-                    <span class="pn-dot pn-dot--green"></span>
-                    <span class="pn-terminal-title">podnest serve</span>
-                </div>
-                <div class="pn-terminal-body">
-                    <div id="pn-terminal-output" aria-live="polite">
-                        <div class="pn-term-cursor" aria-hidden="true">▋</div>
-                    </div>
-                </div>
-            </div>
-
-        </div><!-- /.pn-hero-inner -->
-    </div>
-</section>
-
-<!-- -- MARQUEE STRIP — managed via PodNest Content → Marquee ----------- -->
-<?php echo podnest_render_block('podnest/marquee-strip'); ?>
-
-<!-- -- FEATURES — managed via PodNest Content → Features --------------- -->
-<section id="features" aria-labelledby="features-heading">
-    <div class="pn-container pn-features">
-        <header class="pn-section-header pn-reveal">
-            <span class="pn-eyebrow"><?php esc_html_e('Capabilities', 'podnest'); ?></span>
-            <h2 id="features-heading"><?php esc_html_e('Everything You Need. Nothing You Don\'t.', 'podnest'); ?></h2>
-            <p class="pn-section-desc">
-                <?php esc_html_e('PodNest ships with enterprise-grade tools configured and wired together out of the box. From provisioning to monitoring — covered.', 'podnest'); ?>
-            </p>
-        </header>
-
-        <?php echo podnest_render_block('podnest/features-grid', ['columns' => 3]); ?>
-
-        <?php
-        /* Link to full features page if template-features.php is assigned */
-        $features_pages = get_pages(['meta_key' => '_wp_page_template', 'meta_value' => 'template-features.php']);
-        if (! empty($features_pages)) :
-        ?>
-            <div style="text-align:center;margin-top:40px;" class="pn-reveal">
-                <a href="<?php echo esc_url(get_permalink($features_pages[0]->ID)); ?>" class="pn-btn-ghost">
-                    <?php esc_html_e('All capabilities', 'podnest'); ?> <span class="pn-arrow">→</span>
-                </a>
-            </div>
-        <?php endif; ?>
-    </div>
-</section>
-
-<!-- -- ARCHITECTURE — static illustrative diagram --------------------- -->
-<section id="how-it-works" aria-labelledby="arch-heading" class="pn-section-alt">
-    <div class="pn-container">
-        <header class="pn-section-header pn-reveal">
-            <span class="pn-eyebrow"><?php esc_html_e('Architecture', 'podnest'); ?></span>
-            <h2 id="arch-heading"><?php esc_html_e('One Pod Per Site. Total Isolation.', 'podnest'); ?></h2>
-            <p class="pn-section-desc">
-                <?php esc_html_e('Every website runs inside its own Podman pod — a sealed group of containers sharing one network namespace. A breach in one site cannot touch any other.', 'podnest'); ?>
-            </p>
-        </header>
-
-        <div class="pn-arch-diagram pn-reveal pn-reveal-delay-2">
-            <div class="pn-arch-row pn-arch-top">
-                <div class="pn-arch-node pn-arch-internet">🌐 <?php esc_html_e('Internet', 'podnest'); ?></div>
-            </div>
-            <div class="pn-arch-arrow" aria-hidden="true">↓</div>
-            <div class="pn-arch-row">
-                <div class="pn-arch-node pn-arch-proxy">
-                    <span class="pn-arch-icon">🔀</span>
-                    <strong><?php esc_html_e('PodNest Reverse Proxy', 'podnest'); ?></strong>
-                    <small><?php esc_html_e("Let's Encrypt TLS · HTTP/2", 'podnest'); ?></small>
-                </div>
-            </div>
-            <div class="pn-arch-arrow" aria-hidden="true">↓</div>
-            <div class="pn-arch-row">
-                <div class="pn-arch-node pn-arch-podnest">
-                    <span class="pn-arch-icon">⚙️</span>
-                    <strong><?php esc_html_e('PodNest Manager', 'podnest'); ?></strong>
-                    <small><?php esc_html_e('Go · REST API · TOTP 2FA', 'podnest'); ?></small>
-                </div>
-            </div>
-            <div class="pn-arch-arrow" aria-hidden="true">↓</div>
-            <div class="pn-arch-row pn-arch-pods">
-                <?php foreach (
-                    [
-                        ['🅆', 'WordPress', 'PHP-FPM · MariaDB · Redis · Nginx'],
-                        ['⬡', 'Node.js',   'Node · MariaDB · Nginx'],
-                        ['⬛', '.NET / Static', 'Kestrel / Nginx'],
-                    ] as [$icon, $label, $services]
-                ) : ?>
-                    <div class="pn-arch-pod">
-                        <div class="pn-arch-pod-header">
-                            <span><?php echo esc_html($icon); ?></span>
-                            <strong><?php echo esc_html($label); ?></strong>
-                        </div>
-                        <div class="pn-arch-pod-services"><?php echo esc_html($services); ?></div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- -- RUNTIMES — managed via PodNest Content → Runtimes --------------- -->
 <section id="site-types" aria-labelledby="runtimes-heading">

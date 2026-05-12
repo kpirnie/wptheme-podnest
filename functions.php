@@ -54,6 +54,31 @@ function podnest_load_class(string $class_name): void
     }
 }
 
+/**
+ * Fetch the latest PodNest release tag from GitHub.
+ *
+ * @return string
+ */
+function podnest_latest_version(): string
+{
+    $cached = get_transient('podnest_github_version');
+    if ($cached) return $cached;
+
+    $response = wp_remote_get('https://api.github.com/repos/kpirnie/podnest/tags', [
+        'headers' => ['User-Agent' => 'wp-podnest-theme'],
+        'timeout' => 5,
+    ]);
+
+    if (is_wp_error($response)) return 'v—';
+
+    $tags = json_decode(wp_remote_retrieve_body($response), true);
+    $version = ! empty($tags[0]['name']) ? $tags[0]['name'] : 'v—';
+
+    set_transient('podnest_github_version', $version, 12 * HOUR_IN_SECONDS);
+
+    return $version;
+}
+
 /*
  * Ordered load list — Nav_Walker and Breadcrumbs load first because
  * other classes (and templates) may instantiate them directly.

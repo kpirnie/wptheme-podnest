@@ -2509,7 +2509,7 @@ p:last-child {
 
 /* -- CTA section wrapper ------------------------------------------ */
 .pn-cta-section {
-    padding: 80px 0;
+    padding: 0 0 80px 0;
     position: relative;
     z-index: 1;
 }
@@ -2579,9 +2579,11 @@ p:last-child {
     .pn-quickstart-methods { grid-template-columns: 1fr; }
 }
 
-.pn-hero-ctas {
-    justify-content: center;
-    margin-top: 56px;
+@media (max-width: 960px) {
+    .pn-hero-ctas { 
+      justify-content: center; 
+      margin-top: 56px; 
+    }
 }
 
 /* -- Pagination --------------------------------------------------- */
@@ -2611,4 +2613,53 @@ p:last-child {
   background: var(--pn-blue);
   border-color: var(--pn-blue);
   color: var(--pn-white);
+}
+
+/* ---- Hero mobile fixes ---- */
+@media (max-width: 960px) {
+    /* pn-hero-ctas was missing from this rule — was targeting pn-hero-actions only */
+    .pn-hero-ctas {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    #hero {
+        padding: calc(var(--pn-nav-h) + 20px) 0 48px;
+    }
+
+    .pn-hero-stats {
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .pn-stat {
+        flex: 0 0 calc(50% - 10px);
+        text-align: center;
+    }
+
+    .pn-terminal-body {
+        min-height: 180px;
+    }
+
+    .pn-hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pn-hero-ctas .pn-btn-primary,
+    .pn-hero-ctas .pn-btn-secondary {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .pn-footer-bottom {
+        justify-content: center;
+    }
+    .pn-footer-copy {
+      text-align:center;
+    }
 }
