@@ -2040,7 +2040,7 @@ p:last-child {
  * Styled to match the footer-links section look exactly.
  */
 .pn-footer-widget-title {
-  font-size: 0.72rem;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--pn-text-dim);
@@ -2089,8 +2089,8 @@ p:last-child {
  */
 .pn-nav-logo img,
 .pn-nav-logo .custom-logo {
-  width: 64px !important;
-  height: 64px !important;
+  width: 80px !important;
+  height: 80px !important;
   object-fit: contain;
   filter: drop-shadow(0 0 10px rgba(43, 142, 255, 0.4));
 }
@@ -2117,9 +2117,9 @@ p:last-child {
   flex-shrink: 0;
 }
 
-.pn-footer-logo-wrap h3 {
+.pn-footer-logo-wrap h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-family: var(--pn-font-brand);
   font-weight: 900;
   line-height: 1;
@@ -2666,3 +2666,9 @@ p:last-child {
     justify-content: center;
     margin-top: 32px;
 }
+
+.pn-404-container {text-align:center;padding:120px 0;}
+.pn-404 {font-size:8rem;font-family:var(--pn-font-brand);font-weight:900;line-height:1;}
+.pn-not-found {font-size:1.8rem;margin:16px 0 12px;}
+.pn-404-lead {max-width:480px;margin:0 auto 36px;}
+.pn-404-cta {justify-content:center;gap:16px;}

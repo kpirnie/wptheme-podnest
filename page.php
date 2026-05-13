@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Default Page Template
  *
@@ -9,36 +10,32 @@
  * @package PodNest
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
+// get the header
 get_header();
 
-if ( have_posts() ) :
+if (have_posts()) :
     the_post();
 ?>
 
-<div class="pn-page-hero">
-    <div class="pn-container">
-        <?php podnest_breadcrumbs(); ?>
-        <h1><?php the_title(); ?></h1>
+    <div class="pn-page-hero">
+        <div class="pn-container">
+            <h1><?php the_title(); ?></h1>
+        </div>
     </div>
-</div>
 
-<div class="pn-content-area">
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <?php
-        the_content();
+    <div class="pn-content-area">
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <?php
+            the_content();
 
-        wp_link_pages( [
-            'before' => '<nav class="pn-page-links"><span>' . __( 'Pages:', 'podnest' ) . '</span>',
-            'after'  => '</nav>',
-        ] );
-        ?>
-    </article>
-</div>
+            ?>
+        </article>
+    </div>
 
 <?php
 endif;
 
+// get the footer
 get_footer();
-?>
