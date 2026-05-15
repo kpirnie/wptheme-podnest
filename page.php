@@ -25,7 +25,7 @@ if (have_posts()) :
         </div>
     </div>
 
-    <div class="pn-content-area">
+    <div class="pn-container">
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <?php
             the_content();
