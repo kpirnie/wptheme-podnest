@@ -46,6 +46,10 @@ final class PodNest_CPTs
     /** Post type slug for support pricing tiers. */
     public const PRICING = 'podnest_pricing';
 
+    /** Post type slug for Instructions. */
+    public const INSTRUCTION = 'podnest_instruction';
+
+
     // -- Constructor -----------------------------------------------
 
     /**
@@ -70,10 +74,11 @@ final class PodNest_CPTs
      */
     public function register_post_types(): void
     {
-        register_post_type(self::MARQUEE, $this->marquee_args());
-        register_post_type(self::FEATURE, $this->feature_args());
-        register_post_type(self::RUNTIME, $this->runtime_args());
-        register_post_type(self::PRICING, $this->pricing_args());
+        register_post_type(self::MARQUEE,       $this->marquee_args());
+        register_post_type(self::FEATURE,       $this->feature_args());
+        register_post_type(self::RUNTIME,       $this->runtime_args());
+        register_post_type(self::PRICING,       $this->pricing_args());
+        register_post_type(self::INSTRUCTION,   $this->instruction_args());
     }
 
     /**
@@ -168,6 +173,32 @@ final class PodNest_CPTs
             'rewrite'       => false,
             'has_archive'   => false,
             'menu_icon'     => 'dashicons-money-alt',
+        ];
+    }
+
+    /**
+     * Returns the post type args for Instructions.
+     *
+     * Features are public so individual feature pages can be linked from
+     * the features grid. The 'editor' support enables the block editor for
+     * adding richer long-form descriptions.
+     *
+     * @return array<string, mixed>
+     */
+    private function instruction_args(): array
+    {
+        return [
+            'labels'            => $this->labels('Instructions', 'Instruction', 'Instructions'),
+            'public'            => true,
+            'has_archive'       => true,
+            'show_ui'           => true,
+            'show_in_menu'      => 'podnest-content',
+            'show_in_rest'      => true,
+            'supports'          => ['title', 'editor', 'thumbnail', 'excerpt',],
+            'rewrite'           => ['slug' => 'instructions'],
+            'menu_icon'         => 'dashicons-star-filled',
+            'capability_type'   => 'page',
+
         ];
     }
 

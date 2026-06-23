@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Custom Navigation Walker
  *
@@ -13,7 +14,7 @@
  * @since   1.1.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 /**
  * Class PodNest_Nav_Walker
@@ -21,7 +22,8 @@ defined( 'ABSPATH' ) || exit;
  * Used by get_nav_menu in header.php. Passed as:
  *   wp_nav_menu( [ 'walker' => new PodNest_Nav_Walker() ] )
  */
-final class PodNest_Nav_Walker extends Walker_Nav_Menu {
+final class PodNest_Nav_Walker extends Walker_Nav_Menu
+{
 
     /**
      * Outputs the start of a nav menu item.
@@ -38,41 +40,47 @@ final class PodNest_Nav_Walker extends Walker_Nav_Menu {
      * @param  int      $id      Menu item ID.
      * @return void
      */
-    public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ): void {
-        $classes    = (array) ( $item->classes ?? [] );
-        $is_active  = in_array( 'current-menu-item', $classes, true )
-                   || in_array( 'current-menu-ancestor', $classes, true );
+    public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0): void
+    {
+        $classes    = (array) ($item->classes ?? []);
+        $is_active  = in_array('current-menu-item', $classes, true)
+            || in_array('current-menu-ancestor', $classes, true);
 
         /* Build the link attribute string safely */
         $atts = [
             'href'   => $item->url ?? '#',
-            'class'  => 'pn-nav-link' . ( $is_active ? ' pn-active' : '' ),
+            'class'  => 'pn-nav-link' . ($is_active ? ' pn-active' : ''),
         ];
 
-        if ( ! empty( $item->attr_title ) ) {
+        if (! empty($item->attr_title)) {
             $atts['title'] = $item->attr_title;
         }
-        if ( ! empty( $item->target ) ) {
+        if (! empty($item->target)) {
             $atts['target'] = $item->target;
             /* Inject noopener for external _blank links (security best practice) */
-            if ( '_blank' === $item->target ) {
-                $atts['rel'] = trim( ( $item->xfn ?? '' ) . ' noopener noreferrer' );
+            if ('_blank' === $item->target) {
+                $atts['rel'] = trim(($item->xfn ?? '') . ' noopener noreferrer');
             }
         }
-        if ( ! empty( $item->xfn ) && '_blank' !== ( $item->target ?? '' ) ) {
+        if (! empty($item->xfn) && '_blank' !== ($item->target ?? '')) {
             $atts['rel'] = $item->xfn;
         }
 
         /* Serialise attribute array to a string */
         $attr_string = '';
-        foreach ( $atts as $k => $v ) {
-            if ( '' !== $v ) {
-                $attr_string .= ' ' . esc_attr( $k ) . '="' . esc_attr( $v ) . '"';
+        foreach ($atts as $k => $v) {
+            if ('' !== $v) {
+                $attr_string .= ' ' . esc_attr($k) . '="' . esc_attr($v) . '"';
             }
         }
 
-        $output .= '<li class="' . esc_attr( implode( ' ', array_filter( $classes ) ) ) . '">';
-        $output .= '<a' . $attr_string . '>' . esc_html( $item->title ) . '</a>';
+        /* Flag items that have sub-menus */
+        if (! empty($args->has_children)) {
+            $classes[] = 'pn-has-dropdown';
+        }
+
+        $output .= '<li class="' . esc_attr(implode(' ', array_filter($classes))) . '">';
+        $output .= '<a' . $attr_string . '>' . esc_html($item->title) . '</a>';
     }
 
     /**
@@ -86,7 +94,26 @@ final class PodNest_Nav_Walker extends Walker_Nav_Menu {
      * @param  stdClass|null $args   wp_nav_menu() arguments (unused).
      * @return void
      */
-    public function end_el( &$output, $item, $depth = 0, $args = null ): void {
+    public function end_el(&$output, $item, $depth = 0, $args = null): void
+    {
         $output .= '</li>';
+    }
+
+    // Add AFTER end_el():
+
+    /**
+     * Opens the sub-menu dropdown <ul>.
+     */
+    public function start_lvl(&$output, $depth = 0, $args = null): void
+    {
+        $output .= '<ul class="pn-dropdown" role="list">';
+    }
+
+    /**
+     * Closes the sub-menu dropdown <ul>.
+     */
+    public function end_lvl(&$output, $depth = 0, $args = null): void
+    {
+        $output .= '</ul>';
     }
 }

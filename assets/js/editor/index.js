@@ -17,10 +17,12 @@
  * @module editor/index
  */
 
-import { registerMarqueeBlock }  from './blocks/marquee.js';
+import { registerContactFormBlock } from './blocks/contact-form.js';
 import { registerFeaturesBlock } from './blocks/features.js';
+import { registerMarqueeBlock } from './blocks/marquee.js';
+import { registerPricingBlock } from './blocks/pricing.js';
 import { registerRuntimesBlock } from './blocks/runtimes.js';
-import { registerPricingBlock }  from './blocks/pricing.js';
+import { registerSocialMenuBlock } from './blocks/social-menu.js';
 
 /**
  * Register all blocks once the document and WP globals are ready.
@@ -30,4 +32,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
     registerFeaturesBlock();
     registerRuntimesBlock();
     registerPricingBlock();
+    registerContactFormBlock();
+    registerSocialMenuBlock();
 } );

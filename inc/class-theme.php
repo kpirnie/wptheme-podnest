@@ -99,6 +99,7 @@ final class PodNest_Theme
         new PodNest_Meta_Boxes();
         new PodNest_Blocks();
         new PodNest_Customizer();
+        new PodNest_Contact();
     }
 
     // -- Theme support --------------------------------------------
@@ -125,8 +126,6 @@ final class PodNest_Theme
 
         add_theme_support('html5', [
             'search-form',
-            'comment-form',
-            'comment-list',
             'gallery',
             'caption',
             'script',
@@ -147,11 +146,6 @@ final class PodNest_Theme
                 remove_post_type_support($type, 'trackbacks');
             }
         });
-
-        // Global content width used by WordPress media embeds.
-        if (! isset($GLOBALS['content_width'])) {
-            $GLOBALS['content_width'] = 1200;
-        }
     }
 
     /**

@@ -38,6 +38,12 @@ final class PodNest_Blocks
     /** Fully-qualified name of the pricing table block. */
     public const PRICING  = 'podnest/pricing-table';
 
+    /** Fully-qualified name of the contact form block. */
+    public const CONTACT = 'podnest/contact-form';
+
+    /** Fully-qualified name of the social menu block. */
+    public const SOCIAL = 'podnest/social-menu';
+
     // -- Constructor -----------------------------------------------
 
     /**
@@ -94,6 +100,20 @@ final class PodNest_Blocks
             'render_callback' => [$this, 'render_pricing'],
             'attributes'      => [],
         ]);
+
+        register_block_type(self::CONTACT, [
+            'editor_script'   => $editor_script,
+            'render_callback' => [$this, 'render_contact_form'],
+            'attributes'      => [],
+        ]);
+
+        register_block_type(self::SOCIAL, [
+            'editor_script'   => $editor_script,
+            'render_callback' => [$this, 'render_social_menu'],
+            'attributes'      => [
+                'align' => ['type' => 'string', 'default' => 'left'],
+            ],
+        ]);
     }
 
     public function register_category(array $cats): array
@@ -137,7 +157,8 @@ final class PodNest_Blocks
         }
 
         return sprintf(
-            '<div class="pn-marquee-strip" aria-hidden="true"><div class="pn-marquee-track">%s</div></div>',
+            '<div class="pn-marquee-strip %s" aria-hidden="true"><div class="pn-marquee-track">%s</div></div>',
+            $this->extra_classes($attrs),
             implode('', $items)
         );
     }
@@ -188,7 +209,7 @@ final class PodNest_Blocks
             );
         }
 
-        return sprintf('<div class="pn-grid-%d pn-features-grid">%s</div>', $cols, $cards);
+        return sprintf('<div class="pn-grid-%d pn-features-grid %s">%s</div>', $cols, $this->extra_classes($attrs), $cards);
     }
 
     /**
@@ -247,7 +268,7 @@ final class PodNest_Blocks
             );
         }
 
-        return sprintf('<div class="pn-grid-%d">%s</div>', $cols, $cards);
+        return sprintf('<div class="pn-grid-%d %s">%s</div>', $cols, $this->extra_classes($attrs), $cards);
     }
 
     /**
@@ -326,7 +347,52 @@ final class PodNest_Blocks
             );
         }
 
-        return '<div class="pn-pricing-grid">' . $cards . '</div>';
+        return sprintf('<div class="pn-pricing-grid %s">%s</div>', $this->extra_classes($attrs), $cards);
+    }
+
+    /**
+     * Renders the contact form block.
+     *
+     * Includes the contact form template part which is handled by
+     * PodNest_Contact::handle_submission() via AJAX.
+     *
+     * @param  array<string, mixed> $attrs   Block attributes (unused).
+     * @param  string               $content Unused inner content.
+     * @return string HTML output.
+     */
+    public function render_contact_form(array $attrs, string $content): string
+    {
+        ob_start();
+        get_template_part('template-parts/contact/form');
+        return (string) ob_get_clean();
+    }
+
+    /**
+     * Renders the social links menu using PodNest_Social_Walker.
+     *
+     * @param  array<string,mixed> $attrs   Unused.
+     * @param  string              $content Unused.
+     * @return string HTML output.
+     */
+    public function render_social_menu(array $attrs, string $content): string
+    {
+        $align   = (string) ($attrs['align'] ?? 'left');
+        $classes = 'pn-footer-social' . ($align === 'center' ? ' pn-social--center ' : ' ');
+        $classes .= $this->extra_classes($attrs);
+
+        if (! has_nav_menu('social')) {
+            return $this->empty_notice(__('Assign a menu to the Social Links location under Appearance → Menus.', 'podnest'));
+        }
+
+        return (string) wp_nav_menu([
+            'theme_location' => 'social',
+            'container'      => 'nav',
+            'container_class' => $classes,
+            'walker'         => new PodNest_Social_Walker(),
+            'items_wrap'     => '%3$s',
+            'fallback_cb'    => false,
+            'echo'           => false,
+        ]);
     }
 
     // -- Private query helpers -------------------------------------
@@ -405,5 +471,23 @@ final class PodNest_Blocks
     private function empty_notice(string $message): string
     {
         return '<p class="pn-muted" style="padding:20px 0;font-style:italic;">' . esc_html($message) . '</p>';
+    }
+
+    /**
+     * Returns any additional CSS classes added via the block editor's
+     * "Additional CSS class(es)" field, with a leading space if present.
+     *
+     * @param  array<string,mixed> $attrs Block attributes.
+     * @return string
+     */
+    private function extra_classes(array $attrs): string
+    {
+        $raw     = trim((string) ($attrs['className'] ?? ''));
+        if ('' === $raw) {
+            return '';
+        }
+
+        $classes = array_filter(array_map('sanitize_html_class', explode(' ', $raw)));
+        return $classes ? ' ' . implode(' ', $classes) : '';
     }
 }

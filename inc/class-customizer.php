@@ -50,6 +50,7 @@ final class PodNest_Customizer
         $this->pricing_section($wp_customize);
         $this->social_section($wp_customize);
         $this->footer_section($wp_customize);
+        $this->contact_section($wp_customize);
     }
 
     // -- Section builders ------------------------------------------
@@ -233,5 +234,17 @@ final class PodNest_Customizer
             'section' => $section,
             'type'    => 'url',
         ]);
+    }
+
+    // Add this method alongside the other section methods:
+    private function contact_section(WP_Customize_Manager $c): void
+    {
+        $c->add_section('podnest_contact_form', [
+            'title'    => __('Contact Form', 'podnest'),
+            'priority' => 48,
+        ]);
+
+        $this->add_text($c, 'recaptcha_site_key',   __('reCAPTCHA v3 Site Key',   'podnest'), 'podnest_contact_form');
+        $this->add_text($c, 'recaptcha_secret_key', __('reCAPTCHA v3 Secret Key', 'podnest'), 'podnest_contact_form');
     }
 }

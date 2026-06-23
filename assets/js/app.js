@@ -19,14 +19,15 @@
  * @module app
  */
 
-import { initHeader }       from './modules/header.js';
-import { initMobileNav }    from './modules/mobile-nav.js';
+import { initContactForm } from './modules/contact-form.js';
+import { initHeader } from './modules/header.js';
+import { initMarquee } from './modules/marquee.js';
+import { initMobileNav } from './modules/mobile-nav.js';
+import { initNavActive } from './modules/nav-active.js';
 import { initScrollReveal } from './modules/scroll-reveal.js';
-import { initTerminal }     from './modules/terminal.js';
-import { initMarquee }      from './modules/marquee.js';
-import { initScrollTop }    from './modules/scroll-top.js';
+import { initScrollTop } from './modules/scroll-top.js';
 import { initSmoothScroll } from './modules/smooth-scroll.js';
-import { initNavActive }    from './modules/nav-active.js';
+import { initTerminal } from './modules/terminal.js';
 
 /**
  * Bootstrap all UI modules once the DOM is fully parsed.
@@ -44,4 +45,5 @@ document.addEventListener( 'DOMContentLoaded', () => {
     initScrollTop();
     initSmoothScroll();
     initNavActive();
+    initContactForm();
 } );

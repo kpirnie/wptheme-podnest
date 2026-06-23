@@ -6,9 +6,9 @@ WordPress marketing theme for [PodNest](https://github.com/kpirnie/podnest) — 
 
 ## Requirements
 
-- WordPress 6.3+
-- PHP 8.2+
-- Node.js 18+ (build only)
+- WordPress 6.8+
+- PHP 8.4+
+- Node.js 24+ (build only)
 
 ---
 
@@ -40,12 +40,6 @@ npm run build:watch   # rebuild on save during development
 npm run build:css     # CSS only
 npm run build:js      # JS only
 ```
-
----
-
-## Demo Content
-
-Import `podnest-demo-content.xml` via **Tools → Import → WordPress** to populate all four CPTs with the original homepage content.
 
 ---
 
@@ -136,17 +130,6 @@ Supported platforms: `github.com`, `discord.com`, `discord.gg`, `twitter.com`, `
 
 ---
 
-## Page Templates
-
-| Template | Purpose |
-|---|---|
-| `template-features.php` | Full features detail page — lists all Feature posts with expanded content |
-| `template-runtimes.php` | Full runtimes detail page — lists all Runtime posts with version details |
-
-Assign these under **Page Attributes → Template** when editing a page. The homepage will automatically link to them when assigned.
-
----
-
 ## Widget Areas
 
 | Sidebar | Location |
@@ -157,50 +140,6 @@ Assign these under **Page Attributes → Template** when editing a page. The hom
 | Blog Sidebar | Blog archive and single post pages |
 
 Footer columns show static fallback links until widgets are assigned.
-
----
-
-## File Structure
-
-```
-wp-podnest/
-├-- functions.php               Bootstrap — loads classes, boots singleton
-├-- front-page.php              Marketing homepage
-├-- header.php / footer.php
-├-- page.php / single.php / index.php / archive.php / search.php / 404.php
-├-- template-features.php       Features detail page template
-├-- template-runtimes.php       Runtimes detail page template
-├-- build.mjs                   esbuild config
-├-- package.json
-│
-├-- inc/
-│   ├-- class-theme.php         Singleton bootstrap — theme support, menus, image sizes
-│   ├-- class-assets.php        Enqueue CSS/JS, widget sidebars, head cleanup
-│   ├-- class-seo.php           OG/Twitter meta, JSON-LD structured data
-│   ├-- class-cpts.php          CPT registration + meta field registration
-│   ├-- class-meta-boxes.php    Meta box UI, save, admin columns
-│   ├-- class-blocks.php        Block registration + server-side render callbacks
-│   ├-- class-customizer.php    Customizer sections and controls
-│   ├-- class-nav-walker.php    Primary nav walker
-│   ├-- class-social-walker.php Social icon nav walker
-│   ├-- class-breadcrumbs.php   Schema.org breadcrumb trail
-│   └-- helpers.php             Template helper functions
-│
-└-- assets/
-    ├-- css/
-    │   ├-- theme.css           Source stylesheet
-    │   └-- podnest.css         Minified build output (gitignored)
-    └-- js/
-        ├-- app.js              Frontend ES module entry point
-        ├-- modules/            Frontend JS modules (8 files)
-        ├-- editor/
-        │   ├-- index.js        Block editor entry point
-        │   ├-- blocks/         Block definition modules (4 files)
-        │   └-- utils/
-        ├-- podnest.js          Minified frontend bundle (gitignored)
-        └-- editor/
-            └-- podnest-editor.js  Minified editor bundle (gitignored)
-```
 
 ---
 

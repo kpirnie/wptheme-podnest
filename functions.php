@@ -93,7 +93,8 @@ $podnest_classes = [
     'CPTs',
     'Meta_Boxes',
     'Blocks',
-    'Theme',        // Singleton; hooks after_setup_theme — load last.
+    'Contact',
+    'Theme',
 ];
 
 foreach ($podnest_classes as $class) {
