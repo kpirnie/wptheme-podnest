@@ -15,7 +15,13 @@ defined('ABSPATH') || exit;
 // get the header
 get_header();
 ?>
-<div class="pn-container" style="padding-top:60px;padding-bottom:80px;">
+<div class="pn-page-hero">
+    <div class="pn-container">
+        <h1><?php the_title(); ?></h1>
+    </div>
+</div>
+
+<div class="pn-container">
     <?php if (have_posts()) : ?>
 
         <div class="pn-blog-grid">

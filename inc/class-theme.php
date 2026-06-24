@@ -100,6 +100,7 @@ final class PodNest_Theme
         new PodNest_Blocks();
         new PodNest_Customizer();
         new PodNest_Contact();
+        new PodNest_Changelog();
     }
 
     // -- Theme support --------------------------------------------

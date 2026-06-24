@@ -25,9 +25,6 @@
                     </h2>
                 </div>
                 <p><?php echo esc_html(podnest_opt('footer_tagline', 'Hardened. Automated. Production-Ready.')); ?></p>
-                <p class="pn-muted" style="font-size:0.82rem;">
-                    <?php esc_html_e('Open source under the MIT license. Built with Go, running on Podman.', 'podnest'); ?>
-                </p>
             </div><!-- /.pn-footer-brand -->
             <div class="pn-footer-links">
                 <?php if (is_active_sidebar('footer-product')) : ?>

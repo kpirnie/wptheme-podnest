@@ -21,6 +21,7 @@
 
 import { initContactForm } from './modules/contact-form.js';
 import { initHeader } from './modules/header.js';
+import { initInstructionsMenu } from './modules/instructions-menu.js';
 import { initMarquee } from './modules/marquee.js';
 import { initMobileNav } from './modules/mobile-nav.js';
 import { initNavActive } from './modules/nav-active.js';
@@ -46,4 +47,5 @@ document.addEventListener( 'DOMContentLoaded', () => {
     initSmoothScroll();
     initNavActive();
     initContactForm();
+    initInstructionsMenu();
 } );

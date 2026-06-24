@@ -118,13 +118,13 @@ final class PodNest_CPTs
     {
         return [
             'labels'        => $this->labels('Features', 'Feature', 'Features'),
-            'public'        => true,
-            'has_archive'   => true,
+            'public'        => false,
+            'has_archive'   => false,
             'show_ui'       => true,
             'show_in_menu'  => 'podnest-content',
             'show_in_rest'  => true,
             'supports'      => ['title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'],
-            'rewrite'       => ['slug' => 'features'],
+            'rewrite'       => false,
             'menu_icon'     => 'dashicons-star-filled',
         ];
     }
@@ -142,13 +142,13 @@ final class PodNest_CPTs
     {
         return [
             'labels'        => $this->labels('Runtimes', 'Runtime', 'Runtimes'),
-            'public'        => true,
-            'has_archive'   => true,
+            'public'        => false,
+            'has_archive'   => false,
             'show_ui'       => true,
             'show_in_menu'  => 'podnest-content',
             'show_in_rest'  => true,
             'supports'      => ['title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'],
-            'rewrite'       => ['slug' => 'runtimes'],
+            'rewrite'       => false,
             'menu_icon'     => 'dashicons-desktop',
         ];
     }
@@ -190,12 +190,12 @@ final class PodNest_CPTs
         return [
             'labels'            => $this->labels('Instructions', 'Instruction', 'Instructions'),
             'public'            => true,
-            'has_archive'       => true,
+            'has_archive'       => false,
             'show_ui'           => true,
             'show_in_menu'      => 'podnest-content',
             'show_in_rest'      => true,
             'supports'          => ['title', 'editor', 'thumbnail', 'excerpt',],
-            'rewrite'           => ['slug' => 'instructions'],
+            'rewrite'           => ['slug' => 'support/instructions', 'with_front' => false],
             'menu_icon'         => 'dashicons-star-filled',
             'capability_type'   => 'page',
 

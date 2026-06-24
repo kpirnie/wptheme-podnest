@@ -94,6 +94,7 @@ $podnest_classes = [
     'Meta_Boxes',
     'Blocks',
     'Contact',
+    'Changelog',
     'Theme',
 ];
 

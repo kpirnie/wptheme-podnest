@@ -17,6 +17,7 @@
  * @module editor/index
  */
 
+import { registerChangelogBlock } from './blocks/changelog.js';
 import { registerContactFormBlock } from './blocks/contact-form.js';
 import { registerFeaturesBlock } from './blocks/features.js';
 import { registerMarqueeBlock } from './blocks/marquee.js';
@@ -34,4 +35,5 @@ document.addEventListener( 'DOMContentLoaded', () => {
     registerPricingBlock();
     registerContactFormBlock();
     registerSocialMenuBlock();
+    registerChangelogBlock();
 } );

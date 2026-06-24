@@ -57,6 +57,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -69,7 +70,6 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
 }
 
 body::before {
@@ -160,7 +160,7 @@ h4 {
 }
 
 p {
-  padding: 25px 0 20px;
+  padding: 15px 0 10px;
 }
 p:last-child {
   margin-bottom: 0;
@@ -315,8 +315,8 @@ p:last-child {
   background: rgba(7, 14, 32, 0.95);
   border-bottom: 1px solid var(--pn-border);
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 #site-header.pn-scrolled::after {
   content: "";
@@ -1657,6 +1657,7 @@ p:last-child {
 .pn-footer-social {
   display: flex;
   gap: 12px;
+  padding: 15px 0px 10px !important;
 }
 .pn-footer-social a {
   width: 36px;
@@ -1722,31 +1723,39 @@ p:last-child {
   position: relative;
   z-index: 1;
 }
+
+.pn-content-pad h2,
 .pn-content-area h2 {
   font-size: 1.8rem;
   margin: 48px 0 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--pn-border);
-}
+} h2.first {margin: 8px 0 16px !important;}
+.pn-content-pad h3,
 .pn-content-area h3 {
   font-size: 1.2rem;
   margin: 32px 0 12px;
 }
+.pn-content-pad p,
 .pn-content-area p {
   color: var(--pn-text-dim);
   margin-bottom: 1.2em;
   line-height: 1.8;
 }
+.pn-content-pad ul,
+.pn-content-pad ol,
 .pn-content-area ul,
 .pn-content-area ol {
   padding-left: 24px;
   color: var(--pn-text-dim);
   margin-bottom: 1.2em;
 }
+.pn-content-pad li,
 .pn-content-area li {
   margin-bottom: 6px;
   line-height: 1.7;
 }
+.pn-content-pad code,
 .pn-content-area code {
   background: var(--pn-bg-card-alt);
   border: 1px solid var(--pn-border-bright);
@@ -1756,6 +1765,7 @@ p:last-child {
   font-size: 0.85em;
   color: var(--pn-cyan);
 }
+.pn-content-pad pre,
 .pn-content-area pre {
   background: #020a1a;
   border: 1px solid var(--pn-border-bright);
@@ -1764,6 +1774,7 @@ p:last-child {
   overflow-x: auto;
   margin-bottom: 1.5em;
 }
+.pn-content-pad pre code,
 .pn-content-area pre code {
   background: none;
   border: none;
@@ -1771,6 +1782,7 @@ p:last-child {
   font-size: 0.85rem;
   color: var(--pn-text);
 }
+.pn-content-pad blockquote,
 .pn-content-area blockquote {
   border-left: 3px solid var(--pn-blue);
   padding-left: 20px;
@@ -1778,15 +1790,17 @@ p:last-child {
   color: var(--pn-text-dim);
   font-style: italic;
 }
+.pn-content-pad a,
 .pn-content-area a {
   color: var(--pn-cyan);
 }
+.pn-content-pad a:hover,
 .pn-content-area a:hover {
   color: var(--pn-blue);
 }
 
 .pn-content-list {
-  padding: 30px 24px 40px;
+  padding: 15px 24px 10px;
 }
 
 /* -- Forms ----------------------------------------------------- */
@@ -2809,3 +2823,344 @@ p:last-child {
 .pad50-noside {padding:50px 0;}
 .padTop25 {padding-top:25px;}
 .padTop50 {padding-top:50px;}
+/* -- Horizontal Rule ------------------------------------------ */
+hr,
+.pn-content-pad hr,
+.pn-content-area hr,
+.wp-block-separator {
+  border: 0;
+  height: 1px;
+  margin: 40px 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--pn-blue),
+    var(--pn-cyan),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+/* Dots variant (<hr class="is-style-dots">) */
+.wp-block-separator.is-style-dots {
+  background: none;
+  height: auto;
+  line-height: 1;
+  text-align: center;
+  opacity: 1;
+}
+.wp-block-separator.is-style-dots::before {
+  content: "···";
+  color: var(--pn-blue);
+  font-size: 1.6rem;
+  letter-spacing: 1rem;
+  padding-left: 1rem;
+}
+
+/* Wide/short variants from the block editor */
+.wp-block-separator.is-style-wide {
+  margin: 48px 0;
+}
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots):not(.alignwide):not(.alignfull) {
+  max-width: 120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* -- Tables --------------------------------------------------- */
+.pn-content-pad table,
+.pn-content-area table,
+.wp-block-table table {
+  width: 100%;
+  margin-bottom: 1.5em;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--pn-border-bright);
+  border-radius: var(--pn-radius);
+  overflow: hidden;
+  font-size: 0.9rem;
+}
+.pn-content-pad th,
+.pn-content-pad td,
+.pn-content-area th,
+.pn-content-area td,
+.wp-block-table th,
+.wp-block-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--pn-border);
+  border-right: 1px solid var(--pn-border);
+}
+
+/* Drop the trailing edges so only the wrapper border shows */
+.pn-content-pad tr td:last-child,
+.pn-content-pad tr th:last-child,
+.pn-content-area tr td:last-child,
+.pn-content-area tr th:last-child,
+.wp-block-table tr td:last-child,
+.wp-block-table tr th:last-child {
+  border-right: none;
+}
+.pn-content-pad tr:last-child td,
+.pn-content-area tr:last-child td,
+.wp-block-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Header row — mono label treatment used elsewhere in the theme */
+.pn-content-pad thead th,
+.pn-content-area thead th,
+.wp-block-table thead th {
+  background: var(--pn-bg-card-alt);
+  color: var(--pn-cyan);
+  font-family: var(--pn-font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Zebra + hover */
+.pn-content-pad tbody tr:nth-child(even),
+.pn-content-area tbody tr:nth-child(even),
+.wp-block-table tbody tr:nth-child(even) {
+  background: rgba(15, 29, 61, 0.4);
+}
+.pn-content-pad tbody tr:hover,
+.pn-content-area tbody tr:hover,
+.wp-block-table tbody tr:hover {
+  background: var(--pn-bg-card-alt);
+}
+
+/* Bordered block-table style (<table class="is-style-stripes"> excluded) */
+.wp-block-table.is-style-stripes table {
+  border: 1px solid var(--pn-border-bright);
+}
+/* Kill core block-library's 3px thead border */
+.pn-content-pad thead,
+.pn-content-area thead,
+.wp-block-table thead {
+  border-bottom: 0;
+}
+
+/* -- Instruction single 66/33 columns ------------------------- */
+.pn-content-pad > .wp-block-columns {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2em;
+  align-items: flex-start;
+}
+.pn-content-pad > .wp-block-columns > .wp-block-column {
+  flex-grow: 0;
+  flex-shrink: 1;
+  min-width: 0; /* let columns shrink instead of overflowing/wrapping */
+}
+@media (max-width: 781px) {
+  .pn-content-pad > .wp-block-columns {
+    flex-wrap: wrap;
+  }
+  .pn-content-pad > .wp-block-columns > .wp-block-column {
+    flex-basis: 100% !important;
+  }
+}
+
+/* -- Instructions menu (collapsible on mobile) ---------------- */
+.pn-docs-menu-toggle {
+  display: none; /* desktop: toggle hidden, full list shows */
+}
+
+@media (max-width: 781px) {
+  .pn-docs-menu {
+    order: -1; /* hoist the menu above the content when stacked */
+    background: var(--pn-bg-card);
+    border: 1px solid var(--pn-border);
+    border-radius: var(--pn-radius);
+    overflow: hidden;
+  }
+
+  /* Hide the duplicate "Menu" heading; the toggle carries the label */
+  .pn-docs-menu > h2.wp-block-heading {
+    display: none;
+  }
+
+  .pn-docs-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--pn-font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--pn-white);
+  }
+
+  /* Collapse the nav until toggled open */
+  .pn-docs-menu nav[aria-label="Instructions"] {
+    display: none;
+  }
+  .pn-docs-menu.pn-open nav[aria-label="Instructions"] {
+    display: block;
+    padding: 0 20px 16px;
+    animation: pn-fade-in-up 0.3s ease both;
+  }
+
+  /* Hamburger → X (mirrors main nav) */
+  .pn-docs-menu-burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 22px;
+    flex-shrink: 0;
+  }
+  .pn-docs-menu-burger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--pn-text-dim);
+    border-radius: 2px;
+    transition: transform var(--pn-transition), opacity var(--pn-transition);
+  }
+  .pn-docs-menu-toggle.active .pn-docs-menu-burger span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .pn-docs-menu-toggle.active .pn-docs-menu-burger span:nth-child(2) {
+    opacity: 0;
+  }
+  .pn-docs-menu-toggle.active .pn-docs-menu-burger span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+@media (min-width: 782px) {
+  .pn-docs-menu {
+    position: sticky;
+    top: calc(var(--pn-nav-h) + 20px);
+    align-self: flex-start; /* stop the column stretching so sticky can travel */
+  }
+}
+.pn-docs-menu .current-menu-item > .wp-block-navigation-item__content {
+  color: var(--pn-cyan);
+  font-weight: 600;
+}
+
+/* -- Content images ------------------------------------------- */
+.pn-content-area img,
+.pn-content-area .wp-block-image img,
+.pn-content-pad img,
+.pn-content-pad .wp-block-image img {
+  border: 1px solid var(--pn-border-bright);
+  border-radius: var(--pn-radius-lg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(43, 142, 255, 0.08);
+  transition: transform var(--pn-transition), box-shadow var(--pn-transition), border-color var(--pn-transition);
+}
+
+/* Keep the figure tidy and caption on-theme */
+.pn-content-area figure.wp-block-image,
+.pn-content-pad figure.wp-block-image {
+  margin: 28px 0;
+}
+.pn-content-area figure.wp-block-image figcaption,
+.pn-content-pad figure.wp-block-image figcaption {
+  color: var(--pn-text-dim);
+  font-size: 0.82rem;
+  font-style: italic;
+  text-align: center;
+  margin-top: 10px;
+}
+/* -- Breadcrumbs (inner page hero) ---------------------------- */
+.pn-breadcrumbs {
+  width: 100%;
+  color: var(--pn-text-dim);
+}
+
+.pn-breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end; /* bottom-right of the hero */
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pn-breadcrumbs li {
+  display: flex;
+  align-items: center;
+}
+
+/* Separator between crumbs */
+.pn-breadcrumbs li:not(:first-child)::before {
+  content: "/";
+  margin-right: 6px;
+  color: var(--pn-border-bright);
+}
+
+.pn-breadcrumbs a {
+  color: var(--pn-text-dim);
+  text-decoration: none;
+  transition: color var(--pn-transition);
+}
+.pn-breadcrumbs a:hover {
+  color: var(--pn-cyan);
+}
+
+/* Current page — the last crumb has no <a>, just a <span> */
+.pn-breadcrumbs li:last-child span {
+  color: var(--pn-white);
+  font-weight: 600;
+}
+.nobtmpad {padding-bottom:0px !important;}
+
+/* -- Changelog ------------------------------------------------ */
+.pn-changelog {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pn-changelog-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--pn-border);
+}
+.pn-changelog-item:last-child {
+  border-bottom: none;
+}
+.pn-changelog-msg {
+  color: var(--pn-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.pn-changelog-msg a {
+  color: var(--pn-text);
+  text-decoration: none;
+  transition: color var(--pn-transition);
+}
+.pn-changelog-msg a:hover {
+  color: var(--pn-cyan);
+}
+.pn-changelog-date {
+  flex-shrink: 0;
+  color: var(--pn-text-dim);
+  font-family: var(--pn-font-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+/* -- Changelog two-column (sticky intro panel) ---------------- */
+.wp-block-columns.is-layout-flex:has(.pn-changelog-wrap) {
+  align-items: flex-start; /* stop core stretching the intro column */
+}
+@media (min-width: 782px) {
+  .wp-block-columns:has(.pn-changelog-wrap) > .wp-block-column:first-child {
+    position: sticky;
+    top: calc(var(--pn-nav-h) + 20px);
+    align-self: flex-start;
+  }
+}

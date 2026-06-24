@@ -169,7 +169,23 @@ final class PodNest_Breadcrumbs
             return;
         }
 
-        /* Custom post types — add archive link if one exists */
+        /* Custom post types */
+        if ('podnest_instruction' === $post->post_type) {
+            /* No archive — nest under the Support → Usage Instructions pages */
+            foreach (['support', 'support/instructions'] as $path) {
+                $ancestor = get_page_by_path($path);
+                if ($ancestor instanceof WP_Post) {
+                    $this->add_item(
+                        (string) get_the_title($ancestor),
+                        (string) get_permalink($ancestor)
+                    );
+                }
+            }
+            $this->add_item(get_the_title(), '');
+            return;
+        }
+
+        /* Other custom post types — add archive link if one exists */
         $post_type_obj = get_post_type_object($post->post_type);
         if ($post_type_obj && $post_type_obj->has_archive) {
             $archive_url = get_post_type_archive_link($post->post_type);

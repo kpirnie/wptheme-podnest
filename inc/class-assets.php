@@ -74,7 +74,7 @@ final class PodNest_Assets
         wp_enqueue_style(
             'podnest-theme',
             PODNEST_URI . '/assets/css/' . ($built_css ? 'podnest.css' : 'theme.css'),
-            [],
+            ['wp-block-library'], // load after core block styles so table/separator overrides win
             PODNEST_VERSION
         );
 

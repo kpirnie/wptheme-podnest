@@ -20,8 +20,13 @@ if (have_posts()) :
 ?>
 
     <div class="pn-page-hero">
-        <div class="pn-container">
+        <div class="pn-container nobtmpad">
             <h1><?php the_title(); ?></h1>
+            <?php
+            if (function_exists('podnest_breadcrumbs')) {
+                podnest_breadcrumbs();
+            }
+            ?>
         </div>
     </div>
 

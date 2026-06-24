@@ -44,6 +44,9 @@ final class PodNest_Blocks
     /** Fully-qualified name of the social menu block. */
     public const SOCIAL = 'podnest/social-menu';
 
+    /** Fully-qualified name of the changelog block. */
+    public const CHANGELOG = 'podnest/changelog';
+
     // -- Constructor -----------------------------------------------
 
     /**
@@ -114,6 +117,17 @@ final class PodNest_Blocks
                 'align' => ['type' => 'string', 'default' => 'left'],
             ],
         ]);
+
+        register_block_type(self::CHANGELOG, [
+            'editor_script'   => $editor_script,
+            'render_callback' => [$this, 'render_changelog'],
+            'attributes'      => [
+                /* Latest N commits to show; ignored when showAll is true. */
+                'count'   => ['type' => 'number',  'default' => 5],
+                /* Show every cached commit (up to the 100 most recent). */
+                'showAll' => ['type' => 'boolean', 'default' => false],
+            ],
+        ]);
     }
 
     public function register_category(array $cats): array
@@ -127,6 +141,24 @@ final class PodNest_Blocks
     }
 
     // -- Public render callbacks -----------------------------------
+
+    /**
+     * Renders the changelog block from cached GitHub commits.
+     *
+     * @param  array<string, mixed> $attrs   Block attributes ('count', 'showAll').
+     * @param  string               $content Unused inner content.
+     * @return string HTML output.
+     */
+    public function render_changelog(array $attrs, string $content): string
+    {
+        $count = ! empty($attrs['showAll']) ? 0 : max(1, (int) ($attrs['count'] ?? 5));
+
+        return sprintf(
+            '<div class="pn-changelog-wrap %s">%s</div>',
+            $this->extra_classes($attrs),
+            PodNest_Changelog::render_html($count)
+        );
+    }
 
     /**
      * Renders the marquee strip block.

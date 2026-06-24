@@ -8,7 +8,7 @@
 defined('ABSPATH') || exit;
 ?>
 <!-- -- RUNTIMES — managed via PodNest Content → Runtimes --------------- -->
-<section id="site-types" aria-labelledby="runtimes-heading">
+<section id="runtimes" aria-labelledby="runtimes-heading">
     <div class="pn-container">
         <header class="pn-section-header pn-reveal">
             <span class="pn-eyebrow"><?php esc_html_e('Runtimes', 'podnest'); ?></span>
