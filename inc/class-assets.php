@@ -146,16 +146,20 @@ final class PodNest_Assets
      */
     public function output_preload_hints(): void
     {
-        $fonts_url = 'https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap';
-?>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preload" as="style" href="<?php echo esc_url($fonts_url); ?>"
-            onload="this.onload=null;this.rel='stylesheet'">
-        <noscript>
-            <link rel="stylesheet" href="<?php echo esc_url($fonts_url); ?>">
-        </noscript>
-<?php
+        $fonts = [
+            'sora-latin-wght-normal.woff2',
+            'orbitron-latin-wght-normal.woff2',
+            'jetbrains-mono-latin-wght-normal.woff2',
+        ];
+
+        foreach ($fonts as $file) {
+            printf(
+                '<link rel="preload" as="font" type="font/woff2" href="%s" crossorigin>' . "\n",
+                esc_url(PODNEST_URI . '/assets/fonts/' . $file)
+            );
+        }
+
+        echo '<link rel="preconnect" href="https://c.pdn.st" crossorigin>' . "\n";
     }
 
     // -- Widget sidebars -------------------------------------------

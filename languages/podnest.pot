@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-09T19:37:13+02:00\n"
+"POT-Creation-Date: 2026-06-26T14:02:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: podnest\n"
@@ -35,478 +35,378 @@ msgstr ""
 msgid "Kevin Pirnie"
 msgstr ""
 
-#: 404.php:21
+#: 404.php:23
 msgid "Page Not Found"
 msgstr ""
 
-#: 404.php:25
+#: 404.php:27
 msgid "The page you are looking for does not exist, was moved, or has been removed."
 msgstr ""
 
-#: 404.php:30
+#: 404.php:32
 msgid "Back to Home"
 msgstr ""
 
-#: 404.php:33
+#: 404.php:35
 msgid "View Features"
 msgstr ""
 
-#: archive.php:48
-#: index.php:54
-#: search.php:55
-msgid "Newer"
+#: footer.php:49
+msgid "All Rights Reserved."
 msgstr ""
 
-#: archive.php:49
-#: index.php:55
-#: search.php:56
-msgid "Older"
-msgstr ""
-
-#: archive.php:55
-msgid "No posts found in this archive."
-msgstr ""
-
-#: footer.php:41
-msgid "Open source under the MIT license. Built with Go, running on Podman."
-msgstr ""
-
-#: footer.php:53
-msgid "Star on GitHub"
-msgstr ""
-
-#: footer.php:64
-msgid "Product"
-msgstr ""
-
-#: footer.php:66
-#: header.php:60
-#: header.php:97
-msgid "Features"
-msgstr ""
-
-#: footer.php:67
-#: header.php:62
-#: header.php:99
-msgid "Site Types"
-msgstr ""
-
-#: footer.php:68
-#: header.php:61
-#: header.php:98
-msgid "How It Works"
-msgstr ""
-
-#: footer.php:69
-#: front-page.php:200
-msgid "Security"
-msgstr ""
-
-#: footer.php:70
-msgid "Pricing"
-msgstr ""
-
-#: footer.php:80
-msgid "Resources"
-msgstr ""
-
-#: footer.php:82
-#: header.php:64
-#: header.php:101
-#: index.php:22
-msgid "Blog"
-msgstr ""
-
-#: footer.php:83
-msgid "Documentation"
-msgstr ""
-
-#: footer.php:84
-msgid "Changelog"
-msgstr ""
-
-#: footer.php:85
-msgid "Issues"
-msgstr ""
-
-#: footer.php:86
-msgid "MIT License"
-msgstr ""
-
-#: footer.php:96
-msgid "Company"
-msgstr ""
-
-#: footer.php:98
-msgid "About Kevin"
-msgstr ""
-
-#: footer.php:99
-#: front-page.php:230
-msgid "Paid Support"
-msgstr ""
-
-#: footer.php:100
-msgid "Contact"
-msgstr ""
-
-#: footer.php:103
+#: footer.php:51
 msgid "Privacy Policy"
 msgstr ""
 
-#: footer.php:117
-msgid "Built by"
+#: footer.php:52
+msgid "Cookie Policy"
 msgstr ""
 
-#: footer.php:119
-msgid "MIT License."
-msgstr ""
-
-#: footer.php:123
+#: footer.php:54
 msgid "Social media links"
 msgstr ""
 
-#: front-page.php:56
-msgid "Key stats"
-msgstr ""
-
-#: front-page.php:68
-msgid "PodNest terminal session example"
-msgstr ""
-
-#: front-page.php:94
-#: template-features.php:22
-msgid "Capabilities"
-msgstr ""
-
-#: front-page.php:95
-msgid "Everything You Need. Nothing You Don't."
-msgstr ""
-
-#: front-page.php:97
-msgid "PodNest ships with enterprise-grade tools configured and wired together out of the box. From provisioning to monitoring — covered."
-msgstr ""
-
-#: front-page.php:110
-msgid "All capabilities"
-msgstr ""
-
-#: front-page.php:121
-msgid "Architecture"
-msgstr ""
-
-#: front-page.php:122
-msgid "One Pod Per Site. Total Isolation."
-msgstr ""
-
-#: front-page.php:124
-msgid "Every website runs inside its own Podman pod — a sealed group of containers sharing one network namespace. A breach in one site cannot touch any other."
-msgstr ""
-
-#: front-page.php:130
-msgid "Internet"
-msgstr ""
-
-#: front-page.php:136
-msgid "PodNest Reverse Proxy"
-msgstr ""
-
-#: front-page.php:137
-msgid "Let's Encrypt TLS · HTTP/2"
-msgstr ""
-
-#: front-page.php:144
-msgid "PodNest Manager"
-msgstr ""
-
-#: front-page.php:145
-msgid "Go · REST API · TOTP 2FA"
-msgstr ""
-
-#: front-page.php:174
-msgid "Runtimes"
-msgstr ""
-
-#: front-page.php:175
-msgid "Run Anything. Manage Everything."
-msgstr ""
-
-#: front-page.php:177
-msgid "PodNest provisions purpose-built pods for every major server-side runtime. Pick your stack — the wiring is handled for you."
-msgstr ""
-
-#: front-page.php:189
-msgid "Explore all runtimes"
-msgstr ""
-
-#: front-page.php:201
-msgid "Hardened at Every Layer."
-msgstr ""
-
-#: front-page.php:231
-msgid "PodNest is Free. Expert Help Isn't."
-msgstr ""
-
-#: front-page.php:233
-msgid "The software is MIT-licensed and always will be. If you want hands-on setup, consulting, or priority support — that is where paid tiers come in."
-msgstr ""
-
-#: front-page.php:255
-msgid "From the Blog"
-msgstr ""
-
-#: front-page.php:256
-msgid "Latest Posts"
-msgstr ""
-
-#: front-page.php:283
-msgid "All posts"
-msgstr ""
-
-#: front-page.php:294
-msgid "Get Started"
-msgstr ""
-
-#: front-page.php:295
-msgid "Five Minutes to Your First Pod."
-msgstr ""
-
-#: front-page.php:297
-msgid "Provision and manage isolated, production-ready site pods from a single web-based management UI — no shell required after initial setup."
-msgstr ""
-
-#: front-page.php:303
-msgid "Container"
-msgstr ""
-
-#: front-page.php:304
-msgid "Run the pre-built image directly with Podman. No compilation required."
-msgstr ""
-
-#: front-page.php:310
-msgid "Docker Compose"
-msgstr ""
-
-#: front-page.php:311
-msgid "Use the included compose file for a one-command deployment with persistent volumes."
-msgstr ""
-
-#: front-page.php:317
-msgid "systemd"
-msgstr ""
-
-#: front-page.php:318
-msgid "Run as a systemd service for production deployments — socket ordering and auto-restart handled for you."
-msgstr ""
-
-#: front-page.php:324
-msgid "From Source"
-msgstr ""
-
-#: front-page.php:325
-msgid "Build the Go binary directly. CGO required. Full control over the binary and deployment path."
-msgstr ""
-
-#: front-page.php:332
-msgid "View on GitHub"
-msgstr ""
-
-#: front-page.php:336
-msgid "Talk to the Author"
-msgstr ""
-
-#: header.php:25
+#: header.php:26
 msgid "Skip to content"
 msgstr ""
 
-#: header.php:29
-msgid "Site header"
-msgstr ""
-
-#: header.php:37
-#: inc/class-breadcrumbs.php:107
-msgid "Home"
-msgstr ""
-
-#: header.php:47
-msgid "Primary"
-msgstr ""
-
-#: header.php:63
-#: header.php:100
-msgid "Support"
-msgstr ""
-
-#: header.php:65
-#: inc/helpers.php:85
-msgid "GitHub"
-msgstr ""
-
-#: header.php:75
-msgid "Toggle navigation menu"
-msgstr ""
-
-#: header.php:88
-msgid "Mobile navigation"
-msgstr ""
-
-#: header.php:108
-msgid "Get Started Free"
-msgstr ""
-
-#: inc/class-assets.php:183
+#: inc/class-assets.php:187
 msgid "Footer — Product"
 msgstr ""
 
-#: inc/class-assets.php:185
+#: inc/class-assets.php:189
 msgid "Widget area for the Product column in the footer."
 msgstr ""
 
-#: inc/class-assets.php:189
+#: inc/class-assets.php:193
 msgid "Footer — Resources"
 msgstr ""
 
-#: inc/class-assets.php:191
+#: inc/class-assets.php:195
 msgid "Widget area for the Resources column in the footer."
 msgstr ""
 
-#: inc/class-assets.php:195
+#: inc/class-assets.php:199
 msgid "Footer — Company"
 msgstr ""
 
-#: inc/class-assets.php:197
+#: inc/class-assets.php:201
 msgid "Widget area for the Company column in the footer."
 msgstr ""
 
-#: inc/class-assets.php:201
+#: inc/class-assets.php:205
 msgid "Blog Sidebar"
 msgstr ""
 
-#: inc/class-assets.php:203
+#: inc/class-assets.php:207
 msgid "Appears in the sidebar on blog archive and single post pages."
 msgstr ""
 
-#: inc/class-blocks.php:162
+#: inc/class-blocks.php:215
 msgid "Add Feature posts under PodNest Content → Features."
 msgstr ""
 
-#: inc/class-blocks.php:177
-#: inc/class-blocks.php:235
-#: template-features.php:77
+#: inc/class-blocks.php:230
+#: inc/class-blocks.php:291
 msgid "Learn more"
 msgstr ""
 
-#: inc/class-blocks.php:210
+#: inc/class-blocks.php:263
 msgid "Add Runtime posts under PodNest Content → Runtimes."
 msgstr ""
 
-#: inc/class-blocks.php:269
+#: inc/class-blocks.php:325
 msgid "Add Pricing Tier posts under PodNest Content → Pricing."
 msgstr ""
 
-#: inc/class-blocks.php:280
+#: inc/class-blocks.php:336
 msgid "Get in Touch"
+msgstr ""
+
+#: inc/class-blocks.php:376
+msgid "Custom"
+msgstr ""
+
+#: inc/class-blocks.php:428
+msgid "Assign a menu to the Social Links location under Appearance → Menus."
 msgstr ""
 
 #: inc/class-breadcrumbs.php:72
 msgid "Breadcrumb"
 msgstr ""
 
-#: inc/class-breadcrumbs.php:121
+#: inc/class-breadcrumbs.php:107
+#: template-parts/navigation/main.php:18
+msgid "Home"
+msgstr ""
+
+#. translators: %s is the search term
+#: inc/class-breadcrumbs.php:122
 #, php-format
 msgid "Search: %s"
 msgstr ""
 
-#: inc/class-breadcrumbs.php:125
+#: inc/class-breadcrumbs.php:126
 msgid "404 — Not Found"
 msgstr ""
 
-#: inc/class-cpts.php:190
+#: inc/class-changelog.php:149
+msgid "No changelog entries available right now."
+msgstr ""
+
+#: inc/class-contact.php:65
+msgid "Form Submissions"
+msgstr ""
+
+#: inc/class-contact.php:66
+msgid "Submission"
+msgstr ""
+
+#: inc/class-contact.php:67
+msgid "Form Items"
+msgstr ""
+
+#: inc/class-contact.php:68
+msgid "View Submission"
+msgstr ""
+
+#: inc/class-contact.php:69
+msgid "All Submissions"
+msgstr ""
+
+#: inc/class-contact.php:88
+msgctxt "post status"
+msgid "Spam"
+msgstr ""
+
+#. translators: %s is the spam count
+#: inc/class-contact.php:93
+#, php-format
+msgid "Spam <span class=\"count\">(%s)</span>"
+msgid_plural "Spam <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-contact.php:157
+msgid "Submission Details"
+msgstr ""
+
+#: inc/class-contact.php:191
+#: inc/class-contact.php:240
+msgid "Name"
+msgstr ""
+
+#: inc/class-contact.php:195
+#: inc/class-contact.php:241
+msgid "Email"
+msgstr ""
+
+#: inc/class-contact.php:200
+#: template-parts/contact/form.php:76
+msgid "Phone"
+msgstr ""
+
+#: inc/class-contact.php:205
+#: inc/class-contact.php:242
+#: template-parts/contact/form.php:88
+msgid "Subject"
+msgstr ""
+
+#: inc/class-contact.php:209
+#: template-parts/contact/form.php:98
+msgid "Message"
+msgstr ""
+
+#: inc/class-contact.php:215
+msgid "IP Address"
+msgstr ""
+
+#: inc/class-contact.php:219
+msgid "User Agent"
+msgstr ""
+
+#: inc/class-contact.php:223
+msgid "Received"
+msgstr ""
+
+#: inc/class-contact.php:243
+#: inc/class-contact.php:274
+#: inc/class-contact.php:339
+msgid "Spam"
+msgstr ""
+
+#: inc/class-contact.php:244
+msgid "Read"
+msgstr ""
+
+#: inc/class-contact.php:245
+msgid "Date"
+msgstr ""
+
+#: inc/class-contact.php:275
+#: inc/class-contact.php:338
+msgid "Clean"
+msgstr ""
+
+#: inc/class-contact.php:309
+msgid "Not Spam"
+msgstr ""
+
+#: inc/class-contact.php:315
+msgid "Mark as Spam"
+msgstr ""
+
+#: inc/class-contact.php:337
+msgid "All Statuses"
+msgstr ""
+
+#: inc/class-contact.php:352
+msgid "Unauthorized"
+msgstr ""
+
+#: inc/class-contact.php:359
+msgid "Security check failed"
+msgstr ""
+
+#: inc/class-contact.php:428
+msgid "Security check failed. Please refresh and try again."
+msgstr ""
+
+#: inc/class-contact.php:433
+#: inc/class-contact.php:439
+#: inc/class-contact.php:482
+#: inc/class-contact.php:488
+#: inc/class-contact.php:493
+#: inc/class-contact.php:529
+msgid "Thank you! Your message has been sent. We'll be in touch soon."
+msgstr ""
+
+#: inc/class-contact.php:447
+msgid "Too many submissions. Please try again later."
+msgstr ""
+
+#: inc/class-contact.php:461
+msgid "Please fill in all required fields."
+msgstr ""
+
+#: inc/class-contact.php:465
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: inc/class-contact.php:501
+msgid "Verification failed. Please try again."
+msgstr ""
+
+#: inc/class-contact.php:514
+msgid "Could not save your message. Please try again."
+msgstr ""
+
+#: inc/class-contact.php:521
+msgid "Contact Form Submission"
+msgstr ""
+
+#. translators: %s is the custom post type name
+#: inc/class-cpts.php:222
 #, php-format
 msgid "Add %s"
 msgstr ""
 
-#: inc/class-cpts.php:191
+#. translators: %s is the custom post type name
+#: inc/class-cpts.php:224
 #, php-format
 msgid "Edit %s"
 msgstr ""
 
-#: inc/class-cpts.php:274
-#: inc/class-cpts.php:275
+#: inc/class-cpts.php:307
+#: inc/class-cpts.php:308
 msgid "PodNest Content"
 msgstr ""
 
-#: inc/class-customizer.php:66
+#: inc/class-customizer.php:67
 msgid "Hero Section"
 msgstr ""
 
-#: inc/class-customizer.php:70
+#: inc/class-customizer.php:71
 msgid "Badge text"
 msgstr ""
 
-#: inc/class-customizer.php:71
+#: inc/class-customizer.php:72
 msgid "Title line 1"
 msgstr ""
 
-#: inc/class-customizer.php:72
+#: inc/class-customizer.php:73
 msgid "Title line 2 (gradient)"
 msgstr ""
 
-#: inc/class-customizer.php:76
+#: inc/class-customizer.php:77
 msgid "Description"
 msgstr ""
 
-#: inc/class-customizer.php:80
+#: inc/class-customizer.php:81
 msgid "Primary CTA text"
 msgstr ""
 
-#: inc/class-customizer.php:81
+#: inc/class-customizer.php:82
 msgid "Primary CTA URL"
 msgstr ""
 
-#: inc/class-customizer.php:82
+#: inc/class-customizer.php:83
 msgid "Secondary CTA text"
 msgstr ""
 
-#: inc/class-customizer.php:83
+#: inc/class-customizer.php:84
 msgid "Secondary CTA URL"
 msgstr ""
 
-#: inc/class-customizer.php:98
+#: inc/class-customizer.php:99
 msgid "Pricing Defaults"
 msgstr ""
 
-#: inc/class-customizer.php:105
+#: inc/class-customizer.php:106
 msgid "Contact page URL"
 msgstr ""
 
-#: inc/class-customizer.php:120
-#: inc/class-theme.php:186
+#: inc/class-customizer.php:121
+#: inc/class-theme.php:201
 msgid "Social Links"
 msgstr ""
 
-#: inc/class-customizer.php:124
+#: inc/class-customizer.php:125
 msgid "GitHub URL"
 msgstr ""
 
-#: inc/class-customizer.php:125
+#: inc/class-customizer.php:126
 msgid "Discord URL"
 msgstr ""
 
-#: inc/class-customizer.php:126
+#: inc/class-customizer.php:127
 msgid "X / Twitter URL"
 msgstr ""
 
-#: inc/class-customizer.php:127
+#: inc/class-customizer.php:128
 msgid "Facebook URL"
 msgstr ""
 
-#: inc/class-customizer.php:139
+#: inc/class-customizer.php:140
 msgid "Footer"
 msgstr ""
 
-#: inc/class-customizer.php:146
+#: inc/class-customizer.php:147
 msgid "Tagline under logo"
+msgstr ""
+
+#: inc/class-customizer.php:243
+#: assets/js/editor/blocks/contact-form.js:37
+msgid "Contact Form"
+msgstr ""
+
+#: inc/class-customizer.php:247
+msgid "reCAPTCHA v3 Site Key"
+msgstr ""
+
+#: inc/class-customizer.php:248
+msgid "reCAPTCHA v3 Secret Key"
 msgstr ""
 
 #: inc/class-meta-boxes.php:63
@@ -620,8 +520,21 @@ msgstr ""
 msgid "Featured"
 msgstr ""
 
+#: inc/class-theme.php:183
+msgid "PodNest Hero (1600×900)"
+msgstr ""
+
 #: inc/class-theme.php:184
+msgid "PodNest Thumb (550x312)"
+msgstr ""
+
+#: inc/class-theme.php:199
 msgid "Primary Navigation"
+msgstr ""
+
+#: inc/helpers.php:85
+#: template-parts/navigation/main.php:46
+msgid "GitHub"
 msgstr ""
 
 #: inc/helpers.php:91
@@ -642,100 +555,285 @@ msgstr ""
 msgid "Scroll to top"
 msgstr ""
 
-#: index.php:60
-msgid "No posts found."
+#: single-podnest_instruction.php:20
+msgid "Usage Instructions"
 msgstr ""
 
-#: page.php:33
-#: single.php:78
-msgid "Pages:"
+#: single-podnest_instruction.php:40
+msgid "Menu"
 msgstr ""
 
-#: search.php:22
-msgid "Search Results"
+#: template-parts/contact/form.php:22
+msgid "Contact form"
 msgstr ""
 
-#. translators: %s = search query
-#: search.php:27
-#, php-format
-msgid "Results for: %s"
+#: template-parts/contact/form.php:34
+msgid "First Name"
 msgstr ""
 
-#: search.php:64
-#, php-format
-msgid "No results found for &ldquo;%s&rdquo;. Try different keywords."
+#: template-parts/contact/form.php:43
+msgid "Jane"
 msgstr ""
 
-#: single.php:50
-msgid "By"
+#: template-parts/contact/form.php:47
+msgid "Last Name"
 msgstr ""
 
-#: single.php:78
-msgid "Page navigation"
+#: template-parts/contact/form.php:56
+msgid "Smith"
 msgstr ""
 
-#: single.php:100
-msgid "Post navigation"
+#: template-parts/contact/form.php:63
+msgid "Email Address"
 msgstr ""
 
-#: single.php:104
-msgid "Previous"
+#: template-parts/contact/form.php:72
+msgid "jane@example.com"
 msgstr ""
 
-#: single.php:114
-msgid "Next"
+#: template-parts/contact/form.php:83
+msgid "+1 (555) 000-0000"
 msgstr ""
 
-#. Template Name of the theme
-msgid "Features — Detail Page"
+#: template-parts/contact/form.php:93
+msgid "How can we help?"
 msgstr ""
 
-#: template-features.php:27
-msgid "Everything PodNest can do — explained in full."
+#: template-parts/contact/form.php:105
+msgid "Tell us about your project or question…"
 msgstr ""
 
-#: template-features.php:44
-msgid "No features added yet. Add some under PodNest Content → Features."
+#: template-parts/contact/form.php:112
+msgid "Send Message"
 msgstr ""
 
-#: template-features.php:92
-msgid "Ready to See It in Action?"
+#: template-parts/contact/form.php:118
+msgid "Protected by reCAPTCHA."
 msgstr ""
 
-#: template-features.php:93
-msgid "PodNest is free and open source. Pull the image and have a working pod manager running in five minutes."
+#: template-parts/navigation/main.php:10
+msgid "Site header"
 msgstr ""
 
-#: template-features.php:94
-msgid "Get Started on GitHub"
+#: template-parts/navigation/main.php:28
+msgid "Primary"
 msgstr ""
 
-#. Template Name of the theme
-msgid "Runtimes — Detail Page"
+#: template-parts/navigation/main.php:41
+#: template-parts/navigation/mobile.php:22
+msgid "Features"
 msgstr ""
 
-#: template-runtimes.php:22
-msgid "Supported Runtimes"
+#: template-parts/navigation/main.php:42
+#: template-parts/navigation/mobile.php:23
+msgid "How It Works"
 msgstr ""
 
-#: template-runtimes.php:27
-msgid "Every runtime PodNest supports — what's included, version options, and how it works."
+#: template-parts/navigation/main.php:43
+#: template-parts/navigation/mobile.php:24
+msgid "Site Types"
 msgstr ""
 
-#: template-runtimes.php:43
-msgid "No runtimes added yet. Add some under PodNest Content → Runtimes."
+#: template-parts/navigation/main.php:44
+#: template-parts/navigation/mobile.php:25
+msgid "Support"
 msgstr ""
 
-#: template-runtimes.php:74
-msgid "Available Versions"
+#: template-parts/navigation/main.php:45
+#: template-parts/navigation/mobile.php:26
+msgid "Blog"
 msgstr ""
 
-#: template-runtimes.php:84
-msgid "External Docs"
+#: template-parts/navigation/main.php:56
+msgid "Toggle navigation menu"
 msgstr ""
 
-#: template-runtimes.php:95
-msgid "Add content to this runtime post to display it here."
+#: template-parts/navigation/mobile.php:13
+msgid "Mobile navigation"
+msgstr ""
+
+#: template-parts/navigation/mobile.php:33
+msgid "Get Started Free"
+msgstr ""
+
+#: template-parts/sections/architecture.php:14
+msgid "Architecture"
+msgstr ""
+
+#: template-parts/sections/architecture.php:15
+msgid "One Pod Per Site. Total Isolation."
+msgstr ""
+
+#: template-parts/sections/architecture.php:17
+msgid "Every website runs inside its own Podman pod — a sealed group of containers sharing one network namespace. A breach in one site cannot touch any other."
+msgstr ""
+
+#: template-parts/sections/architecture.php:23
+msgid "Internet"
+msgstr ""
+
+#: template-parts/sections/architecture.php:29
+msgid "PodNest Reverse Proxy"
+msgstr ""
+
+#: template-parts/sections/architecture.php:30
+msgid "Let's Encrypt TLS · HTTP/2"
+msgstr ""
+
+#: template-parts/sections/architecture.php:37
+msgid "PodNest Manager"
+msgstr ""
+
+#: template-parts/sections/architecture.php:38
+msgid "Go · REST API · TOTP 2FA"
+msgstr ""
+
+#: template-parts/sections/cta.php:14
+msgid "Get Started"
+msgstr ""
+
+#: template-parts/sections/cta.php:15
+msgid "Five Minutes to Your First Pod."
+msgstr ""
+
+#: template-parts/sections/cta.php:17
+msgid "Provision and manage isolated, production-ready site pods from a single web-based management UI — no shell required after initial setup."
+msgstr ""
+
+#: template-parts/sections/cta.php:23
+msgid "Container"
+msgstr ""
+
+#: template-parts/sections/cta.php:24
+msgid "Run the pre-built image directly with Podman. No compilation required."
+msgstr ""
+
+#: template-parts/sections/cta.php:30
+msgid "Docker Compose"
+msgstr ""
+
+#: template-parts/sections/cta.php:31
+msgid "Use the included compose file for a one-command deployment with persistent volumes."
+msgstr ""
+
+#: template-parts/sections/cta.php:37
+msgid "systemd"
+msgstr ""
+
+#: template-parts/sections/cta.php:38
+msgid "Run as a systemd service for production deployments — socket ordering and auto-restart handled for you."
+msgstr ""
+
+#: template-parts/sections/cta.php:44
+msgid "From Source"
+msgstr ""
+
+#: template-parts/sections/cta.php:45
+msgid "Build the Go binary directly. CGO required. Full control over the binary and deployment path."
+msgstr ""
+
+#: template-parts/sections/cta.php:52
+msgid "View on GitHub"
+msgstr ""
+
+#: template-parts/sections/cta.php:57
+msgid "Talk to the Author"
+msgstr ""
+
+#: template-parts/sections/features.php:15
+msgid "Capabilities"
+msgstr ""
+
+#: template-parts/sections/features.php:16
+msgid "A Complete Stack in Every Pod"
+msgstr ""
+
+#: template-parts/sections/features.php:18
+msgid "PodNest ships with enterprise-grade tools configured and wired together out of the box. From provisioning to monitoring — covered."
+msgstr ""
+
+#: template-parts/sections/features.php:31
+msgid "All capabilities"
+msgstr ""
+
+#: template-parts/sections/hero.php:45
+msgid "Key stats"
+msgstr ""
+
+#: template-parts/sections/hero.php:57
+msgid "PodNest terminal session example"
+msgstr ""
+
+#: template-parts/sections/pricing.php:14
+msgid "Paid Support"
+msgstr ""
+
+#: template-parts/sections/pricing.php:15
+msgid "PodNest is Free. Expert Help Isn't."
+msgstr ""
+
+#: template-parts/sections/pricing.php:17
+msgid "The software is MIT-licensed and always will be. If you want hands-on setup, consulting, or priority support — that is where paid tiers come in."
+msgstr ""
+
+#: template-parts/sections/runtimes.php:14
+msgid "Runtimes"
+msgstr ""
+
+#: template-parts/sections/runtimes.php:15
+msgid "Run Anything. Manage Everything."
+msgstr ""
+
+#: template-parts/sections/runtimes.php:17
+msgid "PodNest provisions purpose-built pods for every major server-side runtime. Pick your stack — the wiring is handled for you."
+msgstr ""
+
+#: template-parts/sections/runtimes.php:29
+msgid "Explore all runtimes"
+msgstr ""
+
+#: template-parts/sections/security.php:14
+msgid "Security"
+msgstr ""
+
+#: template-parts/sections/security.php:15
+msgid "Hardened at Every Layer."
+msgstr ""
+
+#: assets/js/editor/blocks/changelog.js:27
+msgid "PodNest: Changelog"
+msgstr ""
+
+#: assets/js/editor/blocks/changelog.js:28
+msgid "Latest commit messages pulled from the PodNest repository."
+msgstr ""
+
+#: assets/js/editor/blocks/changelog.js:48
+msgid "Show all commits"
+msgstr ""
+
+#: assets/js/editor/blocks/changelog.js:58
+msgid "Number of commits"
+msgstr ""
+
+#: assets/js/editor/blocks/changelog.js:72
+msgid "Changelog Settings"
+msgstr ""
+
+#: assets/js/editor/blocks/changelog.js:78
+msgid "Pulls commit messages from the PodNest repo. Cached daily."
+msgstr ""
+
+#: assets/js/editor/blocks/contact-form.js:24
+msgid "PodNest: Contact Form"
+msgstr ""
+
+#: assets/js/editor/blocks/contact-form.js:25
+msgid "Renders the PodNest AJAX contact form with reCAPTCHA support."
+msgstr ""
+
+#: assets/js/editor/blocks/contact-form.js:38
+msgid "Renders the AJAX contact form. Configure reCAPTCHA under Appearance → Customize → PodNest Settings."
 msgstr ""
 
 #: assets/js/editor/blocks/features.js:27
@@ -808,4 +906,36 @@ msgstr ""
 
 #: assets/js/editor/blocks/runtimes.js:65
 msgid "Renders published Runtime posts. Manage under PodNest Content → Runtimes."
+msgstr ""
+
+#: assets/js/editor/blocks/social-menu.js:27
+msgid "PodNest: Social Menu"
+msgstr ""
+
+#: assets/js/editor/blocks/social-menu.js:28
+msgid "Renders the Social Links menu as SVG icon links."
+msgstr ""
+
+#: assets/js/editor/blocks/social-menu.js:45
+msgid "Layout"
+msgstr ""
+
+#: assets/js/editor/blocks/social-menu.js:47
+msgid "Alignment"
+msgstr ""
+
+#: assets/js/editor/blocks/social-menu.js:50
+msgid "Left"
+msgstr ""
+
+#: assets/js/editor/blocks/social-menu.js:51
+msgid "Center"
+msgstr ""
+
+#: assets/js/editor/blocks/social-menu.js:60
+msgid "Social Menu"
+msgstr ""
+
+#: assets/js/editor/blocks/social-menu.js:61
+msgid "Renders the Social Links nav menu as SVG icons. Assign a menu under Appearance → Menus → Social Links."
 msgstr ""

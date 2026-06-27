@@ -18,7 +18,7 @@ defined('ABSPATH') || exit;
 
             <div class="pn-hero-content">
                 <span class="pn-hero-badge">
-                    <?php echo podnest_opt('hero_badge_text', 'Open Source &middot; MIT License'); ?>
+                    <?php echo podnest_opt('hero_badge_text', 'Open Source &middot; MIT Licensed &middot; Production Ready'); ?>
                 </span>
                 <h1 class="pn-hero-title" id="hero-heading">
                     <?php echo esc_html(podnest_opt('hero_title_line1', 'Secure. Manage.')); ?><br>
@@ -29,7 +29,7 @@ defined('ABSPATH') || exit;
                 <p class="pn-hero-desc">
                     <?php echo esc_html(podnest_opt(
                         'hero_description',
-                        'PodNest provisions and manages isolated, production-hardened website pods using Podman — no shell required after initial setup.'
+                        'PodNest provisions and manages isolated, performant, hardened website pods using Podman — one server, many sites, zero shared fate.'
                     )); ?>
                 </p>
                 <div class="pn-hero-ctas">
@@ -64,7 +64,6 @@ defined('ABSPATH') || exit;
                 </div>
                 <div class="pn-terminal-body">
                     <div id="pn-terminal-output" aria-live="polite">
-                        <div class="pn-term-cursor" aria-hidden="true">▋</div>
                     </div>
                 </div>
             </div>

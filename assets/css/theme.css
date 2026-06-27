@@ -1,8 +1,8 @@
-/* ============================================================
-   PodNest Marketing Theme — Main Stylesheet
-   ============================================================ */
 
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+/* -- Fonts --------------------------------------------------- */
+@font-face{font-family:"Orbitron";font-style:normal;font-weight:400 900;font-display:swap;src:url(../fonts/orbitron-latin-wght-normal.woff2) format("woff2")}
+@font-face{font-family:"Sora";font-style:normal;font-weight:100 800;font-display:swap;src:url(../fonts/sora-latin-wght-normal.woff2) format("woff2")}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:100 800;font-display:swap;src:url(../fonts/jetbrains-mono-latin-wght-normal.woff2) format("woff2")}
 
 /* -- Variables ------------------------------------------------ */
 :root {
@@ -458,6 +458,7 @@ p:last-child {
   .pn-nav-inner { height: 80px; }
   .pn-nav-links { display: none; }
   .pn-nav-hamburger { display: flex; }
+  
 }
 
 /* -- Buttons -------------------------------------------------- */
@@ -618,7 +619,7 @@ p:last-child {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: calc(var(--pn-nav-h) + 40px) 0 80px;
+  padding: calc(var(--pn-nav-h) + 40px) 0 50px;
   position: relative;
   overflow: hidden;
 }
@@ -844,24 +845,6 @@ p:last-child {
 }
 .pn-term-ok {
   color: var(--pn-success);
-}
-.pn-term-cursor {
-  display: inline-block;
-  width: 8px;
-  height: 14px;
-  background: var(--pn-cyan);
-  animation: pn-blink 1.1s step-end infinite;
-  vertical-align: text-bottom;
-  margin-left: 2px;
-}
-@keyframes pn-blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
 }
 
 @media (max-width: 960px) {
@@ -1270,6 +1253,7 @@ p:last-child {
   .pn-security-grid {
     grid-template-columns: 1fr;
   }
+  #site-header{padding-top:13px;}
 }
 
 /* -- Support / Pricing ----------------------------------------- */
@@ -1430,6 +1414,21 @@ p:last-child {
   .pn-pricing-card.pn-featured:hover {
     transform: translateY(-6px);
   }
+}
+
+/* Custom (no-price) pricing variant — stack unit under the word */
+.pn-pricing-price--custom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.pn-pricing-price--custom .pn-price-amount {
+  font-size: 2.6rem; /* dial down from the $-figure size */
+  line-height: 1.1;
+}
+.pn-pricing-price--custom .pn-price-unit {
+  margin: 0; /* drop any inline left-margin from the default unit */
 }
 
 /* -- Testimonials / Social Proof ------------------------------ */
@@ -1600,7 +1599,7 @@ p:last-child {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px;
-  padding-bottom: 48px;
+  padding-bottom: 60px;
 }
 
 .pn-footer-brand h3 {
@@ -1613,7 +1612,7 @@ p:last-child {
   color: var(--pn-text-dim);
   font-size: 0.88rem;
   line-height: 1.7;
-  max-width: 300px;
+  max-width: 375px;
   margin-bottom: 20px;
 }
 
@@ -2229,7 +2228,7 @@ p:last-child {
 
 /* -- Alternate section background -------------------------------- */
 .pn-section-alt {
-  padding: 100px 0;
+  padding: 50px 0;
   position: relative;
   z-index: 1;
   background: linear-gradient(
@@ -2241,12 +2240,7 @@ p:last-child {
 }
 @media (max-width: 960px) {
   .pn-section-alt {
-    padding: 70px 0;
-  }
-}
-@media (max-width: 640px) {
-  .pn-section-alt {
-    padding: 50px 0;
+    padding: 25px 0;
   }
 }
 
@@ -2636,7 +2630,7 @@ p:last-child {
 
 @media (max-width: 640px) {
   #hero {
-    padding: calc(var(--pn-nav-h) + 20px) 0 48px;
+    padding: calc(var(--pn-nav-h) + 20px) 0 25px;
   }
   .pn-hero-stats {
     flex-wrap: wrap;
@@ -3163,4 +3157,79 @@ hr,
     top: calc(var(--pn-nav-h) + 20px);
     align-self: flex-start;
   }
+}
+
+/* -- Terminal cursor blink ------------------------------------ */
+.pn-term-cursor {
+  color: var(--pn-cyan);
+  font-family: var(--pn-font-mono);
+  animation: pn-cursor-blink 1.1s steps(1) infinite;
+}
+@keyframes pn-cursor-blink {
+  50% { opacity: 0; }
+}
+
+/* -- Menu separator item -------------------------------------- */
+/* Block nav — the <li> holding the #-href becomes a full-width divider */
+.pn-docs-menu .wp-block-navigation-item:has(a[href="#"]) {
+  position: relative;
+  width: 100%;
+  flex-basis: 100%;   /* override flex shrink-to-content */
+  height: 1px;
+  margin: 6px 0;
+  padding: 0;
+  pointer-events: none;
+}
+.pn-docs-menu .wp-block-navigation-item:has(a[href="#"]) a,
+.pn-docs-menu .wp-block-navigation-item:has(a[href="#"]) span {
+  display: block;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;   /* kill the # glyph entirely */
+}
+.pn-docs-menu .wp-block-navigation-item:has(a[href="#"])::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--pn-blue),
+    var(--pn-cyan),
+    transparent
+  );
+  opacity: 0.6;
+}
+
+/* Classic nav — gradient line drawn above the .pn-nav-sep item */
+.pn-docs-menu .pn-nav-sep {
+  position: relative;
+  margin-top: 14px;
+  padding-top: 14px;
+}
+.pn-docs-menu .pn-nav-sep > a {
+  font-size: 0;
+  padding: 0;
+}
+.pn-docs-menu .pn-nav-sep::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--pn-blue),
+    var(--pn-cyan),
+    transparent
+  );
+  opacity: 0.5;
 }

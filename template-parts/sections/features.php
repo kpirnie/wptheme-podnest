@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
     <div class="pn-container pn-features">
         <header class="pn-section-header pn-reveal">
             <span class="pn-eyebrow"><?php esc_html_e('Capabilities', 'podnest'); ?></span>
-            <h2 id="features-heading"><?php esc_html_e('Everything You Need. Nothing You Don\'t.', 'podnest'); ?></h2>
+            <h2 id="features-heading"><?php esc_html_e('A Complete Stack in Every Pod', 'podnest'); ?></h2>
             <p class="pn-section-desc">
                 <?php esc_html_e('PodNest ships with enterprise-grade tools configured and wired together out of the box. From provisioning to monitoring — covered.', 'podnest'); ?>
             </p>

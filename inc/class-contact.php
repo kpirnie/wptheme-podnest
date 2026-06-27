@@ -91,6 +91,7 @@ final class PodNest_Contact
             'show_in_admin_all_list'    => true,
             'show_in_admin_status_list' => true,
             'label_count'               => _n_noop(
+                /* translators: %s is the spam count */
                 'Spam <span class="count">(%s)</span>',
                 'Spam <span class="count">(%s)</span>',
                 'podnest'

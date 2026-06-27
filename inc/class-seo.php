@@ -30,53 +30,19 @@ final class PodNest_SEO
      */
     public function __construct()
     {
-        /* Meta tags at priority 2 so they land before most plugins */
-        add_action('wp_head', [$this, 'output_meta_tags'], 2);
 
         /* Structured data at priority 20, after meta tags */
         add_action('wp_head', [$this, 'output_structured_data'], 20);
+
+        /* Fall back to the page excerpt when Yoast has no meta description */
+        add_filter('wpseo_metadesc', [$this, 'yoast_metadesc_fallback']);
+
+        /* Schema is owned by the theme — suppress Yoast's JSON-LD graph
+           so we don't ship duplicate Organization nodes */
+        add_filter('wpseo_json_ld_output', '__return_empty_array');
     }
 
     // -- Public output methods -------------------------------------
-
-    /**
-     * Outputs <meta> tags for description, robots, canonical, Open Graph,
-     * and Twitter Card — but only when no dedicated SEO plugin is active.
-     *
-     * @return void
-     */
-    public function output_meta_tags(): void
-    {
-        if ($this->seo_plugin_active()) {
-            return;
-        }
-
-        $meta = $this->resolve_page_meta();
-
-        echo "\n<!-- PodNest SEO Meta -->\n";
-        printf('<meta name="description" content="%s">' . "\n",   esc_attr($meta['description']));
-        printf('<meta name="robots" content="index, follow, max-image-preview:large">' . "\n");
-        printf('<link rel="canonical" href="%s">' . "\n",          esc_url($meta['url']));
-
-        /* Open Graph */
-        printf('<meta property="og:type"         content="%s">' . "\n", esc_attr($meta['type']));
-        printf('<meta property="og:url"          content="%s">' . "\n", esc_url($meta['url']));
-        printf('<meta property="og:title"        content="%s">' . "\n", esc_attr($meta['title']));
-        printf('<meta property="og:description"  content="%s">' . "\n", esc_attr($meta['description']));
-        printf('<meta property="og:image"        content="%s">' . "\n", esc_url($meta['image']));
-        printf('<meta property="og:image:width"  content="1200">' . "\n");
-        printf('<meta property="og:image:height" content="630">' . "\n");
-        printf('<meta property="og:site_name"    content="%s">' . "\n", esc_attr(get_bloginfo('name')));
-        printf('<meta property="og:locale"       content="en_US">' . "\n");
-
-        /* Twitter / X Card */
-        printf('<meta name="twitter:card"        content="summary_large_image">' . "\n");
-        printf('<meta name="twitter:title"       content="%s">' . "\n", esc_attr($meta['title']));
-        printf('<meta name="twitter:description" content="%s">' . "\n", esc_attr($meta['description']));
-        printf('<meta name="twitter:image"       content="%s">' . "\n", esc_url($meta['image']));
-
-        echo "<!-- / PodNest SEO Meta -->\n\n";
-    }
 
     /**
      * Outputs JSON-LD structured data appropriate to the current page type:
@@ -87,9 +53,6 @@ final class PodNest_SEO
      */
     public function output_structured_data(): void
     {
-        if ($this->seo_plugin_active()) {
-            return;
-        }
 
         if (is_front_page() || is_home()) {
             $this->output_schema($this->software_application_schema());
@@ -97,8 +60,13 @@ final class PodNest_SEO
             return;
         }
 
-        if (is_singular('post')) {
-            $this->output_schema($this->article_schema());
+        if (is_page()) {
+            $this->output_schema($this->page_schema());
+            return;
+        }
+
+        if (is_singular('podnest_instruction')) {
+            $this->output_schema($this->instruction_schema());
         }
     }
 
@@ -111,28 +79,47 @@ final class PodNest_SEO
      */
     private function software_application_schema(): array
     {
-        return [
+        /* Most-recent commit date drives dateModified (already cached) */
+        $latest   = PodNest_Changelog::commits(1);
+        $modified = ! empty($latest[0]['date']) ? $latest[0]['date'] : '';
+
+        // setup the schema arrary
+        $schema = [
             '@context'            => 'https://schema.org',
             '@type'               => 'SoftwareApplication',
             'name'                => 'PodNest',
             'applicationCategory' => 'DeveloperApplication',
             'operatingSystem'     => 'Linux',
             'url'                 => home_url('/'),
-            'image'               => PODNEST_URI . '/assets/images/podnest-og.png',
-            'description'         => 'PodNest provisions and manages isolated, production-hardened website pods using Podman. Manage WordPress, PHP, Node.js, .NET, and Static HTML from a single web UI.',
+            'image'               => 'https://c.pdn.st/logos/podnest.svg',
+            'screenshot'          => 'https://podnest.us/wp-content/uploads/2026/06/podnest-dashboard.png',
+            'description'         => 'PodNest provisions and manages isolated, performant, hardened website pods using Podman — one server, many sites, zero shared fate.',
             'author'              => $this->person_schema(),
+            'maintainer'          => $this->person_schema(),
             'publisher'           => $this->publisher_schema(),
-            'softwareVersion'     => PODNEST_VERSION,
+            'softwareVersion'     => ltrim(podnest_latest_version(), 'v'),
             'license'             => 'https://opensource.org/licenses/MIT',
-            'codeRepository'      => 'https://github.com/kpirnie/podnest',
-            'offers'              => [
-                '@type'         => 'Offer',
-                'price'         => '0',
-                'priceCurrency' => 'USD',
-                'availability'  => 'https://schema.org/InStock',
-            ],
-            'featureList' => 'Pod-per-site isolation, Nginx reverse proxy, Let\'s Encrypt TLS, SFTP access, phpMyAdmin, WP-CLI, MariaDB, Redis, Fail2Ban, IP/UA security rules, TOTP 2FA',
+            'copyrightHolder'     => $this->person_schema(),
+            'copyrightYear'       => '2026',
+            'featureList'         => $this->feature_list(),
+            'isAccessibleForFree' => true,
+            'runtimePlatform'     => 'Go; Podman; JavaScript; HTML; CSS',
+            'softwareRequirements' => 'Podman (rootless-capable); Linux host',
+            'softwareHelp'        => home_url('/support/instructions/'),
+            'downloadUrl'         => 'https://github.com/kpirnie/podnest/releases',
+            'installUrl'          => 'https://github.com/kpirnie/podnest/releases',
+            'releaseNotes'        => 'https://github.com/kpirnie/podnest/releases',
+            'discussionUrl'       => 'https://github.com/kpirnie/podnest/issues',
+            'keywords'            => 'self-hosted, Podman, container hosting, WordPress hosting, .Net hosting, Node.JS hosting, web hosting, reverse proxy, site management, rootless containers',
+            'datePublished'       => '2026-05-08T12:00:00Z',
         ];
+
+        // if we do have a real modified date...
+        if ('' !== $modified) {
+            $schema['dateModified'] = $modified;
+        }
+
+        return $schema;
     }
 
     /**
@@ -145,13 +132,17 @@ final class PodNest_SEO
         return [
             '@context' => 'https://schema.org',
             '@type'    => 'Organization',
-            'name'     => get_bloginfo('name'),
+            'name'     => 'Kevin Pirnie',
+            'slogan' => 'Expert WordPress, Development, & DevOps Solutions',
             'url'      => home_url('/'),
             'logo'     => [
                 '@type' => 'ImageObject',
-                'url'   => PODNEST_URI . '/assets/images/podnest-og.png',
+                'url'   => 'https://c.pdn.st/logos/podnest.svg',
             ],
-            'founder'  => $this->person_schema(),
+            'founder'  => $this->toned_down_person_schema(),
+            'address' => 'Feeding Hills, MA 01030 - United States',
+            'email' => 'info@podne.st',
+            'telephone' => '+1-405-757-4678 (757-HOST)',
             'sameAs'   => [
                 'https://github.com/kpirnie',
                 'https://kevinpirnie.com/',
@@ -160,36 +151,65 @@ final class PodNest_SEO
     }
 
     /**
-     * Builds the Schema.org Article object for the current single post.
+     * Builds the Schema.org WebPage object for a standard Page.
      *
      * @return array<string, mixed>
      */
-    private function article_schema(): array
+    private function page_schema(): array
     {
         global $post;
 
         $image = has_post_thumbnail()
             ? get_the_post_thumbnail_url($post, 'podnest-hero')
-            : PODNEST_URI . '/assets/images/podnest-og.png';
+            : 'https://c.pdn.st/pn/podnest-social-wall.jpg';
+
+        return [
+            '@context'      => 'https://schema.org',
+            '@type'         => 'WebPage',
+            'name'          => wp_strip_all_tags(get_the_title()),
+            'description'   => wp_trim_words(wp_strip_all_tags(has_excerpt() ? get_the_excerpt() : get_the_content()), 30, '...'),
+            'url'           => get_permalink(),
+            'datePublished' => get_the_date('c'),
+            'dateModified'  => get_the_modified_date('c'),
+            'publisher'     => $this->publisher_schema(),
+            'image'         => ['@type' => 'ImageObject', 'url' => $image],
+            'isPartOf'      => ['@type' => 'WebSite', 'name' => get_bloginfo('name'), 'url' => home_url('/')],
+        ];
+    }
+
+    /**
+     * Builds the Schema.org TechArticle object for a single instruction.
+     *
+     * Instructions are documentation-style content, so TechArticle is a
+     * better semantic fit than a generic WebPage.
+     *
+     * @return array<string, mixed>
+     */
+    private function instruction_schema(): array
+    {
+        global $post;
+
+        $image = has_post_thumbnail()
+            ? get_the_post_thumbnail_url($post, 'podnest-hero')
+            : 'https://c.pdn.st/pn/podnest-social-wall.jpg';
+
+        // get the author and publisher nodes
+        $publisher = $this->publisher_schema();
 
         return [
             '@context'         => 'https://schema.org',
-            '@type'            => 'Article',
+            '@type'            => 'TechArticle',
             'headline'         => wp_strip_all_tags(get_the_title()),
-            'description'      => wp_trim_words(wp_strip_all_tags(get_the_excerpt() ?: get_the_content()), 30, '…'),
+            'description'      => wp_trim_words(wp_strip_all_tags(has_excerpt() ? get_the_excerpt() : get_the_content()), 30, '...'),
             'url'              => get_permalink(),
             'datePublished'    => get_the_date('c'),
             'dateModified'     => get_the_modified_date('c'),
-            'author'           => [
-                '@type' => 'Person',
-                'name'  => get_the_author(),
-                'url'   => get_author_posts_url((int) get_the_author_meta('ID')),
-            ],
-            'publisher'        => $this->publisher_schema(),
+            'author'           => $this->toned_down_person_schema(),
+            'publisher'        => $publisher,
             'image'            => ['@type' => 'ImageObject', 'url' => $image],
             'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => get_permalink()],
         ];
-    }
+    }    
 
     // -- Shared schema fragments -----------------------------------
 
@@ -203,7 +223,82 @@ final class PodNest_SEO
         return [
             '@type' => 'Person',
             'name'  => 'Kevin Pirnie',
+            'givenName' => 'Kevin',
+            'familyName' => 'Pirnie',
+            'address' => 'Feeding Hills, MA 01030 - United States',
+            'email' => 'iam@kevinpirnie.com',
+            'telephone' => '+1-405-757-4678 (757-HOST)',
+            'jobTitle' => 'DevOps Support Lead, WordPress/Hosting',
+            'pronouns' => 'he/him/his',
             'url'   => 'https://kevinpirnie.com/',
+            'image' => 'https://c.pdn.st/logos/kevinpirnie-logo-color.svg',
+            'skills' => [
+                'WordPress development',
+                'WordPress theme development',
+                'WordPress plugin development',
+                'Gutenberg block development',
+                'WP-CLI',
+                'WordPress REST API',
+                'PHP',
+                'Go',
+                'JavaScript',
+                'SQL',
+                'HTML',
+                'CSS',
+                'Bash',
+                '.NET',
+                'Linux server administration',
+                'Windows Server administration',
+                'Podman',
+                'Docker',
+                'rootless containers',
+                'container hardening',
+                'nginx',
+                'reverse proxy configuration',
+                'Varnish',
+                'Redis',
+                'MariaDB',
+                'MySQL',
+                'Microsoft SQL Server',
+                'CI/CD',
+                'GitHub Actions',
+                'multi-architecture container builds',
+                'Fail2Ban',
+                'SFTP',
+                'restic backups',
+                'AWS',
+                'Google Cloud Platform',
+                'WP Engine',
+                'Kinsta',
+                'Cloudways',
+                'Pantheon',
+                'cPanel',
+                'WHM',
+                'ServerPilot',
+                'LAMP',
+                'LEMP',
+                'IIS',
+                'web application security',
+                'Web Application Firewall',
+                'OWASP Core Rule Set',
+                'HTTP security headers',
+                'Content Security Policy',
+                'HSTS',
+                'CSRF protection',
+                'TLS',
+                "Let's Encrypt",
+                'vulnerability patching',
+                'audit logging',
+                'REST API design',
+                'SOAP',
+                'JSON-LD',
+                'Schema.org structured data',
+                'Model Context Protocol',
+                'OAuth',
+                'OIDC',
+                'technical SEO',
+                'AI agent readiness',
+            ],
         ];
     }
 
@@ -214,88 +309,33 @@ final class PodNest_SEO
      */
     private function publisher_schema(): array
     {
-        return [
-            '@type' => 'Organization',
-            'name'  => get_bloginfo('name'),
-            'logo'  => [
-                '@type' => 'ImageObject',
-                'url'   => PODNEST_URI . '/assets/images/podnest-og.png',
-            ],
-        ];
+        // get the existing Organization schema
+        $org = $this->organization_schema();
+
+        // remove the context and return the rest
+        unset($org['@context']);
+        return $org;
     }
 
     // -- Utilities -------------------------------------------------
 
-    /**
-     * Returns true when a known SEO plugin is active.
-     *
-     * Checked by class/constant existence rather than plugin file paths
-     * so it works regardless of how or where the plugin is installed.
-     *
-     * @return bool
-     */
-    private function seo_plugin_active(): bool
+
+    // toned down Person
+    private function toned_down_person_schema(): array
     {
-        return defined('WPSEO_VERSION')    // Yoast SEO
-            || defined('AIOSEO_VERSION')   // All-in-One SEO
-            || class_exists('RankMath');   // RankMath
-    }
+        // hold hte person
+        $person = $this->person_schema();
 
-    /**
-     * Resolves and sanitises all per-page meta values into a flat array.
-     *
-     * Centralising this logic keeps output_meta_tags() readable and makes
-     * the values easy to unit-test in isolation.
-     *
-     * @return array{title: string, description: string, url: string, image: string, type: string}
-     */
-    private function resolve_page_meta(): array
-    {
-        global $post;
+        // unset some nodes for the author
+        unset(
+            $person['address'],
+            $person['email'],
+            $person['telephone'],
+            $person['pronouns'],
+            $person['skills']
+        );
 
-        $site_name   = get_bloginfo('name');
-        $default_img = PODNEST_URI . '/assets/images/podnest-og.png';
-        $default_desc = 'PodNest provisions and manages isolated, production-hardened website pods using Podman — no shell required after initial setup.';
-
-        if (is_singular() && ! empty($post)) {
-            $title = mb_strimwidth(wp_strip_all_tags(get_the_title()), 0, 70, '…');
-            $desc  = mb_strimwidth(
-                wp_strip_all_tags(has_excerpt($post) ? get_the_excerpt() : wp_trim_words(get_the_content(), 30)),
-                0,
-                160,
-                '…'
-            );
-            return [
-                'title'       => $title,
-                'description' => $desc,
-                'url'         => get_permalink(),
-                'image'       => has_post_thumbnail() ? get_the_post_thumbnail_url($post, 'podnest-hero') : $default_img,
-                'type'        => 'article',
-            ];
-        }
-
-        if (is_front_page() || is_home()) {
-            return [
-                'title'       => mb_strimwidth($site_name . ' — Secure. Manage. Deploy.', 0, 70, '…'),
-                'description' => mb_strimwidth(get_bloginfo('description') ?: $default_desc, 0, 160, '…'),
-                'url'         => home_url('/'),
-                'image'       => $default_img,
-                'type'        => 'website',
-            ];
-        }
-
-        /* Fallback for archives, search, etc. */
-        $current_url = (is_ssl() ? 'https' : 'http') . '://'
-            . sanitize_text_field($_SERVER['HTTP_HOST'] ?? '')
-            . sanitize_text_field($_SERVER['REQUEST_URI'] ?? '/');
-
-        return [
-            'title'       => mb_strimwidth(wp_title('—', false, 'right') . $site_name, 0, 70, '…'),
-            'description' => mb_strimwidth(get_bloginfo('description') ?: $default_desc, 0, 160, '…'),
-            'url'         => esc_url_raw($current_url),
-            'image'       => $default_img,
-            'type'        => 'website',
-        ];
+        return $person;
     }
 
     /**
@@ -307,8 +347,53 @@ final class PodNest_SEO
     private function output_schema(array $schema): void
     {
         printf(
-            '<script type="application/ld+json">%s</script>' . "\n",
-            wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)
+            "\n" . '<script type="application/ld+json">%s</script>' . "\n",
+            wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
         );
+    }
+
+    /**
+     * Supplies the page excerpt as the Yoast meta description when Yoast
+     * has none set. Only fires for singular pages that have an excerpt.
+     *
+     * @param  string $desc The meta description resolved by Yoast.
+     * @return string
+     */
+    public function yoast_metadesc_fallback(string $desc): string
+    {
+        if ('' === trim($desc) && is_singular('page') && has_excerpt()) {
+            return mb_strimwidth(wp_strip_all_tags(get_the_excerpt()), 0, 160, '…');
+        }
+        return $desc;
+    }
+
+    /**
+     * Builds featureList from published Features CPT titles (lowercased),
+     * falling back to a static list when none are published so the node
+     * is never emitted empty.
+     *
+     * @return string
+     */
+    private function feature_list(): string
+    {
+        $ids = get_posts([
+            'post_type'   => PodNest_CPTs::FEATURE,
+            'post_status' => 'publish',
+            'numberposts' => -1,
+            'orderby'     => 'menu_order title',
+            'order'       => 'ASC',
+            'fields'      => 'ids',
+        ]);
+
+        if (empty($ids)) {
+            return 'pod-per-site isolation, nginx reverse proxy, let\'s encrypt tls, sftp access, phpmyadmin, wp-cli, mariadb, redis, fail2ban, ip/ua security rules, totp 2fa';
+        }
+
+        $names = array_map(
+            static fn(int $id): string => strtolower(wp_strip_all_tags(get_the_title($id))),
+            $ids
+        );
+
+        return implode(', ', $names);
     }
 }

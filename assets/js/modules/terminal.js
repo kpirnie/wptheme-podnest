@@ -48,12 +48,10 @@ export function initTerminal() {
     if ( ! terminal ) {
         return;
     }
-
-    /* Remove the initial blinking cursor placeholder if present */
-    const existingCursor = terminal.querySelector( '.pn-term-cursor' );
-    if ( existingCursor ) {
-        existingCursor.remove();
-    }
+    
+    /* Cursor lives outside the output (sibling), so it won't flash here.
+       We re-add it on its own line once the sequence finishes. */
+    const lastDelay = LINES[ LINES.length - 1 ].delay;
 
     LINES.forEach( ( { text, cls, delay } ) => {
         setTimeout( () => {
@@ -66,4 +64,15 @@ export function initTerminal() {
             terminal.scrollTop = terminal.scrollHeight;
         }, delay );
     } );
+
+    /* After the last line, drop a blinking cursor on a new line */
+    setTimeout( () => {
+        const cursor = document.createElement( 'div' );
+        cursor.className = 'pn-term-cursor';
+        cursor.setAttribute( 'aria-hidden', 'true' );
+        cursor.textContent = '_';
+        terminal.appendChild( cursor );
+        terminal.scrollTop = terminal.scrollHeight;
+    }, lastDelay + 300 );
+
 }

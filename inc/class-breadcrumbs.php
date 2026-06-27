@@ -118,6 +118,7 @@ final class PodNest_Breadcrumbs
             $this->add_item((string) get_the_date('F Y'), '');
         } elseif (is_search()) {
             $this->add_item(
+                /* translators: %s is the search term */
                 sprintf(__('Search: %s', 'podnest'), get_search_query()),
                 ''
             );

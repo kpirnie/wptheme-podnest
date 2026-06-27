@@ -14,10 +14,10 @@ defined('ABSPATH') || exit;
     <meta charset="<?php bloginfo('charset'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <?php wp_head(); ?>
-    <link rel="icon" type="image/svg+xml" href="https://c.pnst.us/logos/podnest.svg" />
-    <link rel="alternate icon" type="image/svg+xml" href="https://c.pnst.us/logos/podnest.svg" />
-    <link rel="apple-touch-icon" href="https://c.pnst.us/logos/podnest.svg" />
-    <link rel="icon" href="https://c.pnst.us/logos/podnest.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="https://c.pdn.st/logos/podnest.svg" />
+    <link rel="alternate icon" type="image/svg+xml" href="https://c.pdn.st/logos/podnest.svg" />
+    <link rel="apple-touch-icon" href="https://c.pdn.st/logos/podnest.png" />
+    <link rel="icon" href="https://c.pdn.st/logos/podnest.ico" sizes="any" />
 </head>
 
 <body <?php body_class(); ?>>
@@ -32,4 +32,4 @@ defined('ABSPATH') || exit;
     // mobile navigation
     get_template_part('template-parts/navigation/mobile');
     ?>
-    <div id="main-content">
+    <main id="main-content">

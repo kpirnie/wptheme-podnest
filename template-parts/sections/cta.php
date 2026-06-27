@@ -51,7 +51,8 @@ defined('ABSPATH') || exit;
                     class="pn-btn-primary" target="_blank" rel="noopener noreferrer">
                     <?php esc_html_e('View on GitHub', 'podnest'); ?>
                 </a>
-                <a href="<?php echo podnest_opt_url('support_contact_url', '#support'); ?>"
+
+                <a href="<?php echo podnest_opt_url('support_contact_url', '/support/contact/'); ?>"
                     class="pn-btn-secondary">
                     <?php esc_html_e('Talk to the Author', 'podnest'); ?>
                 </a>

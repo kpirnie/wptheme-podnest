@@ -23,7 +23,7 @@ if (have_posts()) :
         <div class="pn-container nobtmpad">
             <h1><?php the_title(); ?></h1>
             <?php
-            if (function_exists('podnest_breadcrumbs')) {
+            if (function_exists('podnest_breadcrumbs') && !is_page(['privacy-policy', 'cookie-policy'])) {
                 podnest_breadcrumbs();
             }
             ?>

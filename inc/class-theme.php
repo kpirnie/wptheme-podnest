@@ -79,6 +79,9 @@ final class PodNest_Theme
         add_filter('comments_open',   '__return_false', 20, 2);
         add_filter('pings_open',      '__return_false', 20, 2);
         add_filter('comments_array',  '__return_empty_array', 10, 2);
+
+        // add the custom image size selections
+        add_filter('image_size_names_choose', [$this, 'selectable_image_sizes']);
     }
 
     // -- Feature class bootstrapping -------------------------------
@@ -125,6 +128,9 @@ final class PodNest_Theme
         add_theme_support('editor-styles');
         add_theme_support('customize-selective-refresh-widgets');
 
+        /* Pages don't support excerpts by default — enable for SEO/meta fallback */
+        add_post_type_support('page', 'excerpt');
+
         add_theme_support('html5', [
             'search-form',
             'gallery',
@@ -159,10 +165,24 @@ final class PodNest_Theme
      */
     public function register_image_sizes(): void
     {
-        add_image_size('podnest-hero',    1600, 900,  true);
-        add_image_size('podnest-feature', 800,  500,  true);
-        add_image_size('podnest-thumb',   400,  250,  true);
-        add_image_size('podnest-square',  600,  600,  true);
+        add_image_size('podnest-hero',    1600, 900);
+        add_image_size('podnest-thumb',   550,  312);
+    }
+
+    /**
+     * Exposes the theme's custom image sizes in the block/media editor
+     * "Image size" dropdown. Without this, add_image_size() crops are
+     * generated but never user-selectable.
+     *
+     * @param  array<string, string> $sizes Selectable sizes (slug => label).
+     * @return array<string, string>
+     */
+    public function selectable_image_sizes(array $sizes): array
+    {
+        return array_merge($sizes, [
+            'podnest-hero'    => __('PodNest Hero (1600×900)',    'podnest'),
+            'podnest-thumb'   => __('PodNest Thumb (550x312)',    'podnest'),
+        ]);
     }
 
     /**
@@ -203,7 +223,7 @@ final class PodNest_Theme
      */
     public function excerpt_more(string $more): string
     {
-        return ' <span class="pn-muted">…</span>';
+        return ' <span class="pn-muted">...</span>';
     }
 
     // -- Editor ---------------------------------------------------

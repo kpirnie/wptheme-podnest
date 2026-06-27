@@ -218,7 +218,9 @@ final class PodNest_CPTs
         return [
             'name'          => __($plural,   'podnest'),
             'singular_name' => __($singular, 'podnest'),
+            /* translators: %s is the custom post type name */
             'add_new_item'  => sprintf(__('Add %s', 'podnest'), $singular),
+            /* translators: %s is the custom post type name */
             'edit_item'     => sprintf(__('Edit %s', 'podnest'), $singular),
             'menu_name'     => __($menu_name, 'podnest'),
         ];

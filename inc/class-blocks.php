@@ -281,13 +281,16 @@ final class PodNest_Blocks
                 }
             }
 
-            $more_link = $more_url
+            // are we on the runtime page
+            $on_page = is_page('features/site-runtimes');
+
+            $more_link = ($on_page) ? '' : ($more_url
                 ? sprintf(
                     '<a href="%s" class="pn-btn-ghost" style="margin-top:16px;font-size:0.82rem;justify-content:center;">%s <span class="pn-arrow">→</span></a>',
                     esc_url($more_url),
                     esc_html__('Learn more', 'podnest')
                 )
-                : '';
+                : '');
 
             $cards .= sprintf(
                 '<article class="pn-site-type-card pn-reveal pn-reveal-delay-%d">%s<h3>%s</h3><p class="pn-muted" style="font-size:0.83rem;line-height:1.6;">%s</p>%s%s</article>',
@@ -364,13 +367,22 @@ final class PodNest_Blocks
                 $list_html .= '</ul>';
             }
 
+            $price_unit = ('' !== trim((string) $price)) ? sprintf(
+                '<div class="pn-pricing-price"><span class="pn-price-amount">$%s</span><span class="pn-price-unit">%s</span></div>',
+                esc_html($price),
+                esc_html($unit)
+            ) : sprintf(
+                '<div class="pn-pricing-price pn-pricing-price--custom"><span class="pn-price-amount">%s</span><span class="pn-price-unit">%s</span></div>',
+                esc_html__('Custom', 'podnest'),
+                ''
+            );
+
             $cards .= sprintf(
-                '<article class="%s">%s%s<div class="pn-pricing-price"><span class="pn-price-amount">$%s</span><span class="pn-price-unit">%s</span></div>%s%s<a href="%s" class="%s" rel="noopener">%s</a></article>',
+                '<article class="%s">%s%s%s%s%s<a href="%s" class="%s" rel="noopener">%s</a></article>',
                 esc_attr($card_class),
                 $badge_html,
                 $tier_html,
-                esc_html($price),
-                esc_html($unit),
+                $price_unit,
                 $desc_html,
                 $list_html,
                 esc_url($cta_url),
