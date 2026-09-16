@@ -2129,6 +2129,10 @@ h2.first {
   transition-delay: 0.4s;
 }
 
+.pn-reveal-delay-5 {
+  transition-delay: 0.5s;
+}
+
 /* -- Animations ------------------------------------------------ */
 @keyframes pn-fade-in-up {
   from {
