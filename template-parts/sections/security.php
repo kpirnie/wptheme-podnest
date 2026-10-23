@@ -19,7 +19,7 @@ defined('ABSPATH') || exit;
             $security = [
                 ['🔒', 'Pod Isolation',       'Each site is a sealed Podman pod. Containers in one pod cannot see traffic from another.'],
                 ['🛡️', 'Fail2Ban Integration', 'Automatic IP banning for repeated auth failures, scan attempts, and bad-actor patterns.'],
-                ['🌐', "Let's Encrypt TLS",   'Automatic certificate provisioning and renewal via Certbot — HTTP-01 and DNS-01 challenges.'],
+                ['🌐', "Let's Encrypt TLS",   'Automatic issuance and renewal via built-in ACME — HTTP-01 and TLS-ALPN-01, with self-signed fallback.'],
                 ['🔑', 'TOTP Two-Factor Auth', 'Time-based one-time passwords protect the management UI with zero external dependencies.'],
                 ['🚫', 'IP & UA Rules',        'Block bad actors at the proxy layer using IP ranges, CIDR notation, and User-Agent patterns.'],
                 ['📂', 'Zero-Trust SFTP',      'Per-site SFTP credentials scoped to that pod only — no shell access, no lateral movement.'],

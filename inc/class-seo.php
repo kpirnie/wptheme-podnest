@@ -91,7 +91,7 @@ final class PodNest_SEO
             'applicationCategory' => 'DeveloperApplication',
             'operatingSystem'     => 'Linux',
             'url'                 => home_url('/'),
-            'image'               => 'https://c.pdn.st/logos/podnest.svg',
+            'image'               => 'https://cdn.pnst.us/logos/podnest.svg',
             'screenshot'          => 'https://podnest.us/wp-content/uploads/2026/06/podnest-dashboard.png',
             'description'         => 'PodNest provisions and manages isolated, performant, hardened website pods using Podman — one server, many sites, zero shared fate.',
             'author'              => $this->person_schema(),
@@ -137,7 +137,7 @@ final class PodNest_SEO
             'url'      => home_url('/'),
             'logo'     => [
                 '@type' => 'ImageObject',
-                'url'   => 'https://c.pdn.st/logos/podnest.svg',
+                'url'   => 'https://cdn.pnst.us/logos/podnest.svg',
             ],
             'founder'  => $this->toned_down_person_schema(),
             'address' => 'Feeding Hills, MA 01030 - United States',
@@ -161,7 +161,7 @@ final class PodNest_SEO
 
         $image = has_post_thumbnail()
             ? get_the_post_thumbnail_url($post, 'podnest-hero')
-            : 'https://c.pdn.st/pn/podnest-social-wall.jpg';
+            : 'https://cdn.pnst.us/pn/podnest-social-wall.jpg';
 
         return [
             '@context'      => 'https://schema.org',
@@ -191,7 +191,7 @@ final class PodNest_SEO
 
         $image = has_post_thumbnail()
             ? get_the_post_thumbnail_url($post, 'podnest-hero')
-            : 'https://c.pdn.st/pn/podnest-social-wall.jpg';
+            : 'https://cdn.pnst.us/pn/podnest-social-wall.jpg';
 
         // get the author and publisher nodes
         $publisher = $this->publisher_schema();
@@ -231,7 +231,7 @@ final class PodNest_SEO
             'jobTitle' => 'DevOps Support Lead, WordPress/Hosting',
             'pronouns' => 'he/him/his',
             'url'   => 'https://kevinpirnie.com/',
-            'image' => 'https://c.pdn.st/logos/kevinpirnie-logo-color.svg',
+            'image' => 'https://cdn.pnst.us/logos/kevinpirnie-logo-color.svg',
             'skills' => [
                 'WordPress development',
                 'WordPress theme development',

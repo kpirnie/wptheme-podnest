@@ -159,7 +159,7 @@ final class PodNest_Assets
             );
         }
 
-        echo '<link rel="preconnect" href="https://c.pdn.st" crossorigin>' . "\n";
+        echo '<link rel="preconnect" href="https://cdn.pnst.us" crossorigin>' . "\n";
     }
 
     // -- Widget sidebars -------------------------------------------

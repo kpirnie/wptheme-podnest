@@ -19,7 +19,7 @@
         <div class="pn-footer-grid">
             <div class="pn-footer-brand">
                 <div class="pn-footer-logo-wrap">
-                    <img src="https://c.pdn.st/logos/podnest.svg" alt="PodNest" width="64" height="64" class="pn-nav-logo-img" loading="eager">
+                    <img src="https://cdn.pnst.us/logos/podnest.svg" alt="PodNest" width="64" height="64" class="pn-nav-logo-img" loading="eager">
                     <h2>
                         <span class="pn-brand-pod">POD</span><span class="pn-brand-nest">NEST</span>
                     </h2>
@@ -49,7 +49,7 @@
                 <?php esc_html_e('All Rights Reserved.', 'podnest'); ?>
                 <br />
                 <a href="<?php echo esc_url(get_privacy_policy_url()); ?>"><?php esc_html_e('Privacy Policy', 'podnest'); ?></a> |
-                <a href="<?php echo esc_url('https://podnest.us/cookie-policy/'); ?>"><?php esc_html_e('Cookie Policy', 'podnest'); ?></a>
+                <a href="<?php echo esc_url('https://podnest.app/cookie-policy/'); ?>"><?php esc_html_e('Cookie Policy', 'podnest'); ?></a>
             </p>
             <nav class="pn-footer-social" aria-label="<?php esc_attr_e('Social media links', 'podnest'); ?>">
                 <?php

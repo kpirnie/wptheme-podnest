@@ -18,7 +18,7 @@ defined('ABSPATH') || exit;
             </p>
         </header>
 
-        <?php echo podnest_render_block('podnest/runtimes-grid', ['columns' => 4]); ?>
+        <?php echo podnest_render_block('podnest/runtimes-grid', ['columns' => 5]); ?>
 
         <?php
         $runtimes_pages = get_pages(['meta_key' => '_wp_page_template', 'meta_value' => 'template-runtimes.php']);

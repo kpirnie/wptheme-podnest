@@ -16,7 +16,7 @@ defined('ABSPATH') || exit;
                 class="pn-nav-logo"
                 rel="home"
                 aria-label="<?php echo esc_attr(get_bloginfo('name') . ' — ' . __('Home', 'podnest')); ?>">
-                <img src="https://c.pdn.st/logos/podnest.svg" alt="PodNest ~ Secure. Manage. Deploy" width="80" height="80" class="pn-nav-logo-img" loading="eager">
+                <img src="https://cdn.pnst.us/logos/podnest.svg" alt="PodNest ~ Secure. Manage. Deploy" width="80" height="80" class="pn-nav-logo-img" loading="eager">
                 <h1 class="pn-brand-word" aria-hidden="true">
                     <span class="pn-brand-pod">POD</span><span class="pn-brand-nest">NEST</span>
                 </h1>

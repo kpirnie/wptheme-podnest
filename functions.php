@@ -23,7 +23,7 @@ defined('ABSPATH') || exit;
 /* -- 1. Constants ---------------------------------------------- */
 
 /** Theme semantic version — used as cache-bust key for all enqueued assets. */
-define('PODNEST_VERSION', '1.1.0');
+define('PODNEST_VERSION', '1.1.1');
 
 /** Absolute filesystem path to the theme root (no trailing slash). */
 define('PODNEST_DIR', get_template_directory());
