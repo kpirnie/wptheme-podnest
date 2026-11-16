@@ -92,6 +92,7 @@ $podnest_classes = [
     'SEO',
     'CPTs',
     'Quickstart',
+    'Architecture',
     'Meta_Boxes',
     'Blocks',
     'Contact',
@@ -107,3 +108,4 @@ foreach ($podnest_classes as $class) {
 
 PodNest_Theme::instance();
 new PodNest_Quickstart();
+new PodNest_Architecture();

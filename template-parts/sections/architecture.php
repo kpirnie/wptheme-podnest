@@ -1,13 +1,21 @@
 <?php
 
 /**
- * Architecture 
+ * Architecture
  * @package PodNest
  */
 
 defined('ABSPATH') || exit;
+
+$pods = get_posts([
+    'post_type'      => PodNest_Architecture::POST_TYPE,
+    'post_status'    => 'publish',
+    'posts_per_page' => -1,
+    'orderby'        => 'menu_order title',
+    'order'          => 'ASC',
+]);
 ?>
-<!-- -- ARCHITECTURE — static illustrative diagram --------------------- -->
+<!-- -- ARCHITECTURE — managed via PodNest Content → Architecture ------- -->
 <section id="how-it-works" aria-labelledby="arch-heading" class="pn-section-alt">
     <div class="pn-container">
         <header class="pn-section-header pn-reveal">
@@ -31,23 +39,24 @@ defined('ABSPATH') || exit;
                 </div>
             </div>
             <div class="pn-arch-arrow" aria-hidden="true">↓</div>
-            <div class="pn-arch-row pn-arch-pods">
-                <?php foreach (
-                    [
-                        ['🅆', 'WordPress / PHP', 'PHP · MariaDB · Valkey · Nginx'],
-                        ['⬡', 'Node.js', 'Node · MariaDB · Valkey · Nginx'],
-                        ['🔷', '.NET or Python', 'App Runtime · MariaDB · Valkey · Nginx'],
-                    ] as [$icon, $label, $services]
-                ) : ?>
-                    <div class="pn-arch-pod">
-                        <div class="pn-arch-pod-header">
-                            <span><?php echo esc_html($icon); ?></span>
-                            <strong><?php echo esc_html($label); ?></strong>
+            <?php if (! empty($pods)) : ?>
+                <div class="pn-arch-row pn-arch-pods">
+                    <?php foreach ($pods as $pod) :
+                        $icon     = (string) get_post_meta($pod->ID, '_pn_icon', true);
+                        $services = (string) get_post_meta($pod->ID, '_pn_services', true);
+                    ?>
+                        <div class="pn-arch-pod">
+                            <div class="pn-arch-pod-header">
+                                <?php if ($icon) : ?>
+                                    <span><?php echo esc_html($icon); ?></span>
+                                <?php endif; ?>
+                                <strong><?php echo esc_html(get_the_title($pod)); ?></strong>
+                            </div>
+                            <div class="pn-arch-pod-services"><?php echo esc_html($services); ?></div>
                         </div>
-                        <div class="pn-arch-pod-services"><?php echo esc_html($services); ?></div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
 
             <div class="pn-arch-row" style="margin-top: 32px;">
                 <div class="pn-arch-node pn-arch-podnest">
