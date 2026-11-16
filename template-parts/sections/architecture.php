@@ -36,7 +36,7 @@ defined('ABSPATH') || exit;
                     [
                         ['🅆', 'WordPress / PHP', 'PHP · MariaDB · Valkey · Nginx'],
                         ['⬡', 'Node.js', 'Node · MariaDB · Valkey · Nginx'],
-                        ['🔷', '.NET / Python', '.NET · Python · MariaDB · Valkey · Nginx'],
+                        ['🔷', '.NET or Python', 'App Runtime · MariaDB · Valkey · Nginx'],
                     ] as [$icon, $label, $services]
                 ) : ?>
                     <div class="pn-arch-pod">
