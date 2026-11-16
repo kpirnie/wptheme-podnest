@@ -95,6 +95,7 @@ $podnest_classes = [
     'Architecture',
     'Diagram_Nodes',
     'Section_Copy',
+    'Hero_Stats',
     'Admin_Icon_Columns',
     'Meta_Boxes',
     'Blocks',
@@ -114,4 +115,5 @@ new PodNest_Quickstart();
 new PodNest_Architecture();
 new PodNest_Diagram_Nodes();
 new PodNest_Section_Copy();
+new PodNest_Hero_Stats();
 new PodNest_Admin_Icon_Columns();

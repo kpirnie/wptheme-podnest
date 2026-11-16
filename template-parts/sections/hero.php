@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Hero 
+ * Hero
  * @package PodNest
  */
 
@@ -43,7 +43,7 @@ defined('ABSPATH') || exit;
                     </a>
                 </div>
                 <div class="pn-hero-stats" aria-label="<?php esc_attr_e('Key stats', 'podnest'); ?>">
-                    <?php foreach ([['MIT', 'License'], ['Go', 'Language'], ['Podman', 'Runtime'], [podnest_latest_version(), 'Released']] as [$v, $l]) : ?>
+                    <?php foreach (PodNest_Hero_Stats::items() as [$v, $l]) : ?>
                         <div class="pn-stat">
                             <span class="pn-stat-value"><?php echo esc_html($v); ?></span>
                             <span class="pn-stat-label"><?php echo esc_html($l); ?></span>
