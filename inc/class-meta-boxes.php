@@ -58,6 +58,16 @@ final class PodNest_Meta_Boxes
      */
     public function register(): void
     {
+
+        add_meta_box(
+            'pn-security-meta',
+            __('Security Settings', 'podnest'),
+            [$this, 'render_security'],
+            PodNest_CPTs::SECURITY,
+            'side',
+            'high'
+        );
+
         add_meta_box(
             'pn-feature-meta',
             __('Feature Settings', 'podnest'),
@@ -87,6 +97,37 @@ final class PodNest_Meta_Boxes
     }
 
     // -- Render callbacks ------------------------------------------
+
+    /**
+     * Renders the Security meta box UI.
+     *
+     * Icon is stored in post meta.
+     * Title and excerpt provide the card content.
+     *
+     * @param  WP_Post $post The post being edited.
+     * @return void
+     */
+    public function render_security(WP_Post $post): void
+    {
+        $this->nonce_field('pn_security_save', 'pn_security_nonce');
+        $icon = (string) get_post_meta($post->ID, '_pn_icon', true);
+    ?>
+        <p>
+            <label for="pn_icon" style="display:block;font-weight:600;margin-bottom:4px;">
+                <?php esc_html_e('Icon (emoji or short text)', 'podnest'); ?>
+            </label>
+            <input type="text"
+                id="pn_icon"
+                name="pn_icon"
+                value="<?php echo esc_attr($icon); ?>"
+                style="width:100%;"
+                placeholder="🛡️">
+        </p>
+        <p class="description">
+            <?php esc_html_e('Title → card heading. Excerpt → card description.', 'podnest'); ?>
+        </p>
+    <?php
+    }
 
     /**
      * Renders the Feature meta box UI.
@@ -323,6 +364,21 @@ final class PodNest_Meta_Boxes
         if ($this->verify_nonce('pn_pricing_nonce', 'pn_pricing_save')) {
             $this->save_pricing($post_id);
         }
+
+        if ($this->verify_nonce('pn_security_nonce', 'pn_security_save')) {
+            $this->save_security($post_id);
+        }
+    }
+
+    /**
+     * Saves Security meta fields.
+     *
+     * @param  int $post_id Target post ID.
+     * @return void
+     */
+    private function save_security(int $post_id): void
+    {
+        update_post_meta($post_id, '_pn_icon', sanitize_text_field($_POST['pn_icon'] ?? ''));
     }
 
     /**
