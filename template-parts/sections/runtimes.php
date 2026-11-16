@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
             <span class="pn-eyebrow"><?php esc_html_e('Runtimes', 'podnest'); ?></span>
             <h2 id="runtimes-heading"><?php esc_html_e('Run Anything. Manage Everything.', 'podnest'); ?></h2>
             <p class="pn-section-desc">
-                <?php esc_html_e('PodNest provisions purpose-built pods for every major server-side runtime. Pick your stack — the wiring is handled for you.', 'podnest'); ?>
+                <?php esc_html_e('Deploy WordPress, PHP, Node.js, Python, .NET, static sites, and reverse proxies. PodNest handles the infrastructure so you can focus on your applications.', 'podnest'); ?>
             </p>
         </header>
 
