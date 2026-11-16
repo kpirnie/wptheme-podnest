@@ -31,19 +31,11 @@ defined('ABSPATH') || exit;
                 </div>
             </div>
             <div class="pn-arch-arrow" aria-hidden="true">↓</div>
-            <div class="pn-arch-row">
-                <div class="pn-arch-node pn-arch-podnest">
-                    <span class="pn-arch-icon">⚙️</span>
-                    <strong><?php esc_html_e('PodNest Manager', 'podnest'); ?></strong>
-                    <small><?php esc_html_e('Go · REST API · TOTP 2FA', 'podnest'); ?></small>
-                </div>
-            </div>
-            <div class="pn-arch-arrow" aria-hidden="true">↓</div>
             <div class="pn-arch-row pn-arch-pods">
                 <?php foreach (
                     [
                         ['🅆', 'WordPress / PHP', 'PHP · MariaDB · Redis · Nginx'],
-                        ['⬡', 'Node.js',   'Node · MariaDB · Redis · Nginx'],
+                        ['⬡', 'Node.js', 'Node · MariaDB · Redis · Nginx'],
                         ['🔷', '.NET / Python', '.NET · Python · MariaDB · Redis · Nginx'],
                     ] as [$icon, $label, $services]
                 ) : ?>
@@ -55,6 +47,14 @@ defined('ABSPATH') || exit;
                         <div class="pn-arch-pod-services"><?php echo esc_html($services); ?></div>
                     </div>
                 <?php endforeach; ?>
+            </div>
+
+            <div class="pn-arch-row" style="margin-top: 32px;">
+                <div class="pn-arch-node pn-arch-podnest">
+                    <span class="pn-arch-icon">⚙️</span>
+                    <strong><?php esc_html_e('PodNest Manager', 'podnest'); ?></strong>
+                    <small><?php esc_html_e('Control Plane · Go · REST API · TOTP 2FA', 'podnest'); ?></small>
+                </div>
             </div>
         </div>
     </div>
