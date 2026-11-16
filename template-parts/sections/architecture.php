@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
     <div class="pn-container">
         <header class="pn-section-header pn-reveal">
             <span class="pn-eyebrow"><?php esc_html_e('Architecture', 'podnest'); ?></span>
-            <h2 id="arch-heading"><?php esc_html_e('One Pod Per Site. Total Isolation.', 'podnest'); ?></h2>
+            <h2 id="arch-heading"><?php esc_html_e('One Pod Per Site. Built for Isolation.', 'podnest'); ?></h2>
             <p class="pn-section-desc">
                 <?php esc_html_e('Every website runs in its own isolated Podman pod, with dedicated containers, networking, and site-specific configurations. PodNest centralizes management, routing, and security while keeping individual workloads separated — reducing cross-site exposure and simplifying administration.', 'podnest'); ?>
             </p>
