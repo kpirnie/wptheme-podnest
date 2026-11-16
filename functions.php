@@ -91,6 +91,7 @@ $podnest_classes = [
     'Assets',
     'SEO',
     'CPTs',
+    'Quickstart',
     'Meta_Boxes',
     'Blocks',
     'Contact',
@@ -105,3 +106,4 @@ foreach ($podnest_classes as $class) {
 /* -- 4. Boot the theme singleton ------------------------------- */
 
 PodNest_Theme::instance();
+new PodNest_Quickstart();

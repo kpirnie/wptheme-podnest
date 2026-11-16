@@ -1,11 +1,19 @@
 <?php
 
 /**
- * CTA 
+ * CTA
  * @package PodNest
  */
 
 defined('ABSPATH') || exit;
+
+$quickstart = get_posts([
+    'post_type'      => PodNest_Quickstart::POST_TYPE,
+    'post_status'    => 'publish',
+    'posts_per_page' => -1,
+    'orderby'        => 'menu_order title',
+    'order'          => 'ASC',
+]);
 ?>
 <!-- -- CTA ------------------------------------------------------------- -->
 <section id="cta" class="pn-cta-section" aria-labelledby="cta-heading">
@@ -16,36 +24,24 @@ defined('ABSPATH') || exit;
             <p class="pn-lead">
                 <?php esc_html_e('Deploy PodNest in minutes with automated installation, containers, or a standalone binary. Manage everything from one web-based control panel.', 'podnest'); ?>
             </p>
-            <div class="pn-quickstart-methods">
-                <div class="pn-quickstart-method">
-                    <span class="pn-quickstart-icon">🚀</span>
-                    <div class="pn-quickstart-content">
-                        <span class="pn-quickstart-label"><?php esc_html_e('pdnctl (Recommended)', 'podnest'); ?></span>
-                        <span class="pn-quickstart-desc"><?php esc_html_e('Automated rootless installation, updates, service management, and upgrades.', 'podnest'); ?></span>
-                    </div>
+            <?php if (! empty($quickstart)) : ?>
+                <div class="pn-quickstart-methods">
+                    <?php foreach ($quickstart as $method) :
+                        $icon = (string) get_post_meta($method->ID, '_pn_icon', true);
+                        $desc = has_excerpt($method) ? $method->post_excerpt : $method->post_content;
+                    ?>
+                        <div class="pn-quickstart-method">
+                            <?php if ($icon) : ?>
+                                <span class="pn-quickstart-icon" aria-hidden="true"><?php echo esc_html($icon); ?></span>
+                            <?php endif; ?>
+                            <div class="pn-quickstart-content">
+                                <span class="pn-quickstart-label"><?php echo esc_html(get_the_title($method)); ?></span>
+                                <span class="pn-quickstart-desc"><?php echo esc_html(wp_strip_all_tags($desc)); ?></span>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
-                <div class="pn-quickstart-method">
-                    <span class="pn-quickstart-icon">🐳</span>
-                    <div class="pn-quickstart-content">
-                        <span class="pn-quickstart-label"><?php esc_html_e('Container', 'podnest'); ?></span>
-                        <span class="pn-quickstart-desc"><?php esc_html_e('Deploy the pre-built Podman image without compiling anything.', 'podnest'); ?></span>
-                    </div>
-                </div>
-                <div class="pn-quickstart-method">
-                    <span class="pn-quickstart-icon">⚙️</span>
-                    <div class="pn-quickstart-content">
-                        <span class="pn-quickstart-label"><?php esc_html_e('systemd', 'podnest'); ?></span>
-                        <span class="pn-quickstart-desc"><?php esc_html_e('Run PodNest as a managed service with automatic restarts.', 'podnest'); ?></span>
-                    </div>
-                </div>
-                <div class="pn-quickstart-method">
-                    <span class="pn-quickstart-icon">🔧</span>
-                    <div class="pn-quickstart-content">
-                        <span class="pn-quickstart-label"><?php esc_html_e('From Source', 'podnest'); ?></span>
-                        <span class="pn-quickstart-desc"><?php esc_html_e('Compile the Go binary for complete deployment flexibility.', 'podnest'); ?></span>
-                    </div>
-                </div>
-            </div>
+            <?php endif; ?>
             <div class="pn-hero-ctas">
                 <a href="<?php echo podnest_opt_url('social_github', 'https://github.com/kpirnie/podnest'); ?>"
                     class="pn-btn-primary" target="_blank" rel="noopener noreferrer">
