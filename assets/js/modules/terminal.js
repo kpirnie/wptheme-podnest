@@ -19,32 +19,16 @@
 
 /** @type {TerminalLine[]} */
 const LINES = [
-  {
-    text: "$ podnest serve --port 8080",
-    cls: "pn-term-prompt pn-term-cmd",
-    delay: 400,
-  },
+  { text: "$ podnest serve --port 8080", cls: "pn-term-prompt pn-term-cmd", delay: 400 },
   { text: "  PodNest starting — debug=false", cls: "pn-term-out", delay: 800 },
-  {
-    text: "  host gateway detected: 10.88.0.1",
-    cls: "pn-term-out",
-    delay: 1100,
-  },
+  { text: "  host gateway detected: 10.88.0.1", cls: "pn-term-out", delay: 1100 },
   { text: "  proxy domain cache warmed", cls: "pn-term-info", delay: 1400 },
   { text: "  global SFTP container started", cls: "pn-term-ok", delay: 1700 },
-  {
-    text: "  global Fail2Ban container started",
-    cls: "pn-term-ok",
-    delay: 2000,
-  },
+  { text: "  global Fail2Ban container started", cls: "pn-term-ok", delay: 2000 },
   { text: "  PodNest management UI :8080", cls: "pn-term-info", delay: 2300 },
   { text: "  proxy HTTPS listener :443", cls: "pn-term-info", delay: 2600 },
   { text: "", cls: "", delay: 2900 },
-  {
-    text: "$ # Site 'acme-corp' provisioned",
-    cls: "pn-term-prompt pn-term-cmd",
-    delay: 3200,
-  },
+  { text: "$ # Site 'acme-corp' provisioned", cls: "pn-term-prompt pn-term-cmd", delay: 3200 },
   { text: "  ✓ MariaDB container started", cls: "pn-term-ok", delay: 3600 },
   { text: "  ✓ Valkey container started", cls: "pn-term-ok", delay: 3900 },
   { text: "  ✓ PHP-FPM container started", cls: "pn-term-ok", delay: 4200 },
@@ -65,11 +49,15 @@ export function initTerminal() {
     return;
   }
 
+  const lines = Array.isArray(window.podnestTerminalLines) && window.podnestTerminalLines.length
+    ? window.podnestTerminalLines
+    : LINES;
+
   /* Cursor lives outside the output (sibling), so it won't flash here.
        We re-add it on its own line once the sequence finishes. */
-  const lastDelay = LINES[LINES.length - 1].delay;
+  const lastDelay = Math.max(...lines.map(({ delay }) => delay));
 
-  LINES.forEach(({ text, cls, delay }) => {
+  lines.forEach(({ text, cls, delay }) => {
     setTimeout(() => {
       const div = document.createElement("div");
       if (cls) div.className = cls;
