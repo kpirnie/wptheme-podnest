@@ -17,12 +17,12 @@ defined('ABSPATH') || exit;
         <div class="pn-security-grid">
             <?php
             $security = [
-                ['🔒', 'Pod Isolation',       'Each site is a sealed Podman pod. Containers in one pod cannot see traffic from another.'],
-                ['🛡️', 'Fail2Ban Integration', 'Automatic IP banning for repeated auth failures, scan attempts, and bad-actor patterns.'],
-                ['🌐', "Let's Encrypt TLS",   'Automatic issuance and renewal via built-in ACME — HTTP-01 and TLS-ALPN-01, with self-signed fallback.'],
-                ['🔑', 'TOTP Two-Factor Auth', 'Time-based one-time passwords protect the management UI with zero external dependencies.'],
-                ['🚫', 'IP & UA Rules',        'Block bad actors at the proxy layer using IP ranges, CIDR notation, and User-Agent patterns.'],
-                ['📂', 'Zero-Trust SFTP',      'Per-site SFTP credentials scoped to that pod only — no shell access, no lateral movement.'],
+                ['🔒', 'Pod Isolation',       'Each site runs in an isolated Podman pod with dedicated containers and networking, reducing cross-site exposure.'],
+                ['🛡️', 'Fail2Ban Integration', 'Automatically ban malicious IPs after repeated login failures, suspicious requests, and abusive traffic.'],
+                ['🌐', "Let's Encrypt TLS" 'Automatic SSL certificate issuance and renewal, with HTTP-01, TLS-ALPN-01, and self-signed fallback.'],
+                ['🔑', 'TOTP Two-Factor Auth', 'Secure management access with time-based one-time passwords and no external authentication service.'],
+                ['🚫', 'IP & UA Rules',        'Block unwanted traffic using IP ranges, CIDR rules, User-Agent filtering, and geographic restrictions.'],
+                ['📂', 'Zero-Trust SFTP',      'Dedicated, site-scoped SFTP access with restricted file permissions and no interactive shell.'],
             ];
             foreach ($security as $i => [$icon, $title, $desc]) :
                 $delay = ($i % 3) + 1;
