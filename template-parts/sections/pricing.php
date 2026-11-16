@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Pricing 
+ * Pricing
  * @package PodNest
  */
 
@@ -11,10 +11,10 @@ defined('ABSPATH') || exit;
 <section id="support" aria-labelledby="pricing-heading">
     <div class="pn-container">
         <header class="pn-section-header pn-reveal">
-            <span class="pn-eyebrow"><?php esc_html_e('Paid Support', 'podnest'); ?></span>
-            <h2 id="pricing-heading"><?php esc_html_e("PodNest is Free. Expert Help Isn't.", 'podnest'); ?></h2>
+            <span class="pn-eyebrow"><?php echo esc_html(PodNest_Section_Copy::value('pricing', 'eyebrow', 'Paid Support')); ?></span>
+            <h2 id="pricing-heading"><?php echo esc_html(PodNest_Section_Copy::value('pricing', 'title', "PodNest is Free. Expert Help Isn't.")); ?></h2>
             <p class="pn-section-desc">
-                <?php esc_html_e('The software is MIT-licensed and always will be. If you want hands-on setup, consulting, or priority support — that is where paid tiers come in.', 'podnest'); ?>
+                <?php echo esc_html(PodNest_Section_Copy::value('pricing', 'description', 'The software is MIT-licensed and always will be. If you want hands-on setup, consulting, or priority support — that is where paid tiers come in.')); ?>
             </p>
         </header>
 

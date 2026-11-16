@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Runtimes 
+ * Runtimes
  * @package PodNest
  */
 
@@ -11,10 +11,10 @@ defined('ABSPATH') || exit;
 <section id="runtimes" aria-labelledby="runtimes-heading">
     <div class="pn-container">
         <header class="pn-section-header pn-reveal">
-            <span class="pn-eyebrow"><?php esc_html_e('Runtimes', 'podnest'); ?></span>
-            <h2 id="runtimes-heading"><?php esc_html_e('Run Anything. Manage Everything.', 'podnest'); ?></h2>
+            <span class="pn-eyebrow"><?php echo esc_html(PodNest_Section_Copy::value('runtimes', 'eyebrow', 'Runtimes')); ?></span>
+            <h2 id="runtimes-heading"><?php echo esc_html(PodNest_Section_Copy::value('runtimes', 'title', 'Run Anything. Manage Everything.')); ?></h2>
             <p class="pn-section-desc">
-                <?php esc_html_e('Deploy WordPress, PHP, Node.js, Python, .NET, static sites, and reverse proxies. PodNest handles the infrastructure so you can focus on your applications.', 'podnest'); ?>
+                <?php echo esc_html(PodNest_Section_Copy::value('runtimes', 'description', 'Deploy WordPress, PHP, Node.js, Python, .NET, static sites, and reverse proxies. PodNest handles the infrastructure so you can focus on your applications.')); ?>
             </p>
         </header>
 

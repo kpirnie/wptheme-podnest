@@ -7,15 +7,14 @@
 
 defined('ABSPATH') || exit;
 ?>
-
 <!-- -- FEATURES — managed via PodNest Content → Features --------------- -->
 <section id="features" aria-labelledby="features-heading">
     <div class="pn-container pn-features">
         <header class="pn-section-header pn-reveal">
-            <span class="pn-eyebrow"><?php esc_html_e('Capabilities', 'podnest'); ?></span>
-            <h2 id="features-heading"><?php esc_html_e('Everything You Need to Manage Your Sites.', 'podnest'); ?></h2>
+            <span class="pn-eyebrow"><?php echo esc_html(PodNest_Section_Copy::value('features', 'eyebrow', 'Capabilities')); ?></span>
+            <h2 id="features-heading"><?php echo esc_html(PodNest_Section_Copy::value('features', 'title', 'Everything You Need to Manage Your Sites.')); ?></h2>
             <p class="pn-section-desc">
-                <?php esc_html_e('PodNest ships with enterprise-grade tools configured and wired together out of the box. From provisioning to monitoring — covered.', 'podnest'); ?>
+                <?php echo esc_html(PodNest_Section_Copy::value('features', 'description', 'PodNest ships with enterprise-grade tools configured and wired together out of the box. From provisioning to monitoring — covered.')); ?>
             </p>
         </header>
 

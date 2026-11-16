@@ -33,10 +33,10 @@ $pods = get_posts([
 <section id="how-it-works" aria-labelledby="arch-heading" class="pn-section-alt">
     <div class="pn-container">
         <header class="pn-section-header pn-reveal">
-            <span class="pn-eyebrow"><?php esc_html_e('Architecture', 'podnest'); ?></span>
-            <h2 id="arch-heading"><?php esc_html_e('One Pod Per Site. Built for Isolation.', 'podnest'); ?></h2>
+            <span class="pn-eyebrow"><?php echo esc_html(PodNest_Section_Copy::value('architecture', 'eyebrow', 'Architecture')); ?></span>
+            <h2 id="arch-heading"><?php echo esc_html(PodNest_Section_Copy::value('architecture', 'title', 'One Pod Per Site. Built for Isolation.')); ?></h2>
             <p class="pn-section-desc">
-                <?php esc_html_e('Every website runs in its own isolated Podman pod, with dedicated containers, networking, and site-specific configurations. PodNest centralizes management, routing, and security while keeping individual workloads separated — reducing cross-site exposure and simplifying administration.', 'podnest'); ?>
+                <?php echo esc_html(PodNest_Section_Copy::value('architecture', 'description', 'Every website runs in its own isolated Podman pod, with dedicated containers, networking, and site-specific configurations. PodNest centralizes management, routing, and security while keeping individual workloads separated — reducing cross-site exposure and simplifying administration.')); ?>
             </p>
         </header>
 

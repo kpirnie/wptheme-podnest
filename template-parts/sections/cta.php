@@ -19,10 +19,10 @@ $quickstart = get_posts([
 <section id="cta" class="pn-cta-section" aria-labelledby="cta-heading">
     <div class="pn-container">
         <div class="pn-cta-inner pn-reveal">
-            <span class="pn-eyebrow"><?php esc_html_e('Get Started', 'podnest'); ?></span>
-            <h2 id="cta-heading"><?php esc_html_e('Five Minutes to Your First Pod.', 'podnest'); ?></h2>
+            <span class="pn-eyebrow"><?php echo esc_html(PodNest_Section_Copy::value('cta', 'eyebrow', 'Get Started')); ?></span>
+            <h2 id="cta-heading"><?php echo esc_html(PodNest_Section_Copy::value('cta', 'title', 'Five Minutes to Your First Pod.')); ?></h2>
             <p class="pn-lead">
-                <?php esc_html_e('Deploy PodNest in minutes with automated installation, containers, or a standalone binary. Manage everything from one web-based control panel.', 'podnest'); ?>
+                <?php echo esc_html(PodNest_Section_Copy::value('cta', 'description', 'Deploy PodNest in minutes with automated installation, containers, or a standalone binary. Manage everything from one web-based control panel.')); ?>
             </p>
             <?php if (! empty($quickstart)) : ?>
                 <div class="pn-quickstart-methods">
