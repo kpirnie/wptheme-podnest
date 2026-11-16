@@ -268,8 +268,8 @@ final class PodNest_CPTs
     {
         $auth = static fn() => current_user_can('edit_posts');
 
-        /* Shared: icon emoji and learn-more link (Feature + Runtime) */
-        foreach ([self::FEATURE, self::RUNTIME] as $type) {
+        /* Shared: icon emoji and learn-more link (Feature, Runtime, Security) */
+        foreach ([self::FEATURE, self::RUNTIME, self::SECURITY] as $type) {
             register_post_meta($type, '_pn_icon', [
                 'show_in_rest'  => true,
                 'single'        => true,
