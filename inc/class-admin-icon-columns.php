@@ -18,6 +18,7 @@ final class PodNest_Admin_Icon_Columns
             PodNest_CPTs::SECURITY,
             PodNest_Quickstart::POST_TYPE,
             PodNest_Architecture::POST_TYPE,
+            PodNest_Diagram_Nodes::POST_TYPE,
         ] as $post_type) {
             add_filter("manage_{$post_type}_posts_columns", [$this, 'columns']);
             add_action("manage_{$post_type}_posts_custom_column", [$this, 'column_content'], 10, 2);

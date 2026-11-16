@@ -93,6 +93,7 @@ $podnest_classes = [
     'CPTs',
     'Quickstart',
     'Architecture',
+    'Diagram_Nodes',
     'Admin_Icon_Columns',
     'Meta_Boxes',
     'Blocks',
@@ -110,4 +111,5 @@ foreach ($podnest_classes as $class) {
 PodNest_Theme::instance();
 new PodNest_Quickstart();
 new PodNest_Architecture();
+new PodNest_Diagram_Nodes();
 new PodNest_Admin_Icon_Columns();
