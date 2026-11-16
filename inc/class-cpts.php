@@ -48,7 +48,9 @@ final class PodNest_CPTs
 
     /** Post type slug for Instructions. */
     public const INSTRUCTION = 'podnest_instruction';
-
+    
+    /** Post type slug for Security Features. */
+    public const SECURITY = 'podnest_security';
 
     // -- Constructor -----------------------------------------------
 
@@ -79,6 +81,7 @@ final class PodNest_CPTs
         register_post_type(self::RUNTIME,       $this->runtime_args());
         register_post_type(self::PRICING,       $this->pricing_args());
         register_post_type(self::INSTRUCTION,   $this->instruction_args());
+        register_post_type(self::SECURITY,      $this->security_args());
     }
 
     /**
@@ -173,6 +176,29 @@ final class PodNest_CPTs
             'rewrite'       => false,
             'has_archive'   => false,
             'menu_icon'     => 'dashicons-money-alt',
+        ];
+    }
+
+    /**
+     * Returns the post type args for Security Features.
+     *
+     * Security Features are not publicly accessible. They are used
+     * to populate the security cards on the front page.
+     *
+     * @return array<string, mixed>
+     */
+    private function security_args(): array
+    {
+        return [
+            'labels'        => $this->labels('Security Features', 'Security Feature', 'Security'),
+            'public'        => false,
+            'has_archive'   => false,
+            'show_ui'       => true,
+            'show_in_menu'  => 'podnest-content',
+            'show_in_rest'  => true,
+            'supports'      => ['title', 'editor', 'excerpt', 'page-attributes'],
+            'rewrite'       => false,
+            'menu_icon'     => 'dashicons-shield',
         ];
     }
 
