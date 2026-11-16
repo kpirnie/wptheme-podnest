@@ -34,9 +34,9 @@ defined('ABSPATH') || exit;
             <div class="pn-arch-row pn-arch-pods">
                 <?php foreach (
                     [
-                        ['🅆', 'WordPress / PHP', 'PHP · MariaDB · Redis · Nginx'],
-                        ['⬡', 'Node.js', 'Node · MariaDB · Redis · Nginx'],
-                        ['🔷', '.NET / Python', '.NET · Python · MariaDB · Redis · Nginx'],
+                        ['🅆', 'WordPress / PHP', 'PHP · MariaDB · Valkey · Nginx'],
+                        ['⬡', 'Node.js', 'Node · MariaDB · Valkey · Nginx'],
+                        ['🔷', '.NET / Python', '.NET · Python · MariaDB · Valkey · Nginx'],
                     ] as [$icon, $label, $services]
                 ) : ?>
                     <div class="pn-arch-pod">
