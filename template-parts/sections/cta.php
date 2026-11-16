@@ -14,35 +14,35 @@ defined('ABSPATH') || exit;
             <span class="pn-eyebrow"><?php esc_html_e('Get Started', 'podnest'); ?></span>
             <h2 id="cta-heading"><?php esc_html_e('Five Minutes to Your First Pod.', 'podnest'); ?></h2>
             <p class="pn-lead">
-                <?php esc_html_e('Provision and manage isolated, production-ready site pods from a single web-based management UI — no shell required after initial setup.', 'podnest'); ?>
+                <?php esc_html_e('Deploy PodNest in minutes with automated installation, containers, or a standalone binary. Manage everything from one web-based control panel.', 'podnest'); ?>
             </p>
             <div class="pn-quickstart-methods">
+                <div class="pn-quickstart-method">
+                    <span class="pn-quickstart-icon">🚀</span>
+                    <div class="pn-quickstart-content">
+                        <span class="pn-quickstart-label"><?php esc_html_e('pdnctl (Recommended)', 'podnest'); ?></span>
+                        <span class="pn-quickstart-desc"><?php esc_html_e('Automated rootless installation, updates, service management, and upgrades.', 'podnest'); ?></span>
+                    </div>
+                </div>
                 <div class="pn-quickstart-method">
                     <span class="pn-quickstart-icon">🐳</span>
                     <div class="pn-quickstart-content">
                         <span class="pn-quickstart-label"><?php esc_html_e('Container', 'podnest'); ?></span>
-                        <span class="pn-quickstart-desc"><?php esc_html_e('Run the pre-built image directly with Podman. No compilation required.', 'podnest'); ?></span>
-                    </div>
-                </div>
-                <div class="pn-quickstart-method">
-                    <span class="pn-quickstart-icon">🗂️</span>
-                    <div class="pn-quickstart-content">
-                        <span class="pn-quickstart-label"><?php esc_html_e('Docker Compose', 'podnest'); ?></span>
-                        <span class="pn-quickstart-desc"><?php esc_html_e('Use the included compose file for a one-command deployment with persistent volumes.', 'podnest'); ?></span>
+                        <span class="pn-quickstart-desc"><?php esc_html_e('Deploy the pre-built Podman image without compiling anything.', 'podnest'); ?></span>
                     </div>
                 </div>
                 <div class="pn-quickstart-method">
                     <span class="pn-quickstart-icon">⚙️</span>
                     <div class="pn-quickstart-content">
                         <span class="pn-quickstart-label"><?php esc_html_e('systemd', 'podnest'); ?></span>
-                        <span class="pn-quickstart-desc"><?php esc_html_e('Run as a systemd service for production deployments — socket ordering and auto-restart handled for you.', 'podnest'); ?></span>
+                        <span class="pn-quickstart-desc"><?php esc_html_e('Run PodNest as a managed service with automatic restarts.', 'podnest'); ?></span>
                     </div>
                 </div>
                 <div class="pn-quickstart-method">
                     <span class="pn-quickstart-icon">🔧</span>
                     <div class="pn-quickstart-content">
                         <span class="pn-quickstart-label"><?php esc_html_e('From Source', 'podnest'); ?></span>
-                        <span class="pn-quickstart-desc"><?php esc_html_e('Build the Go binary directly. CGO required. Full control over the binary and deployment path.', 'podnest'); ?></span>
+                        <span class="pn-quickstart-desc"><?php esc_html_e('Compile the Go binary for complete deployment flexibility.', 'podnest'); ?></span>
                     </div>
                 </div>
             </div>
